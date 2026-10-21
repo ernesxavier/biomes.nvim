@@ -14,9 +14,30 @@ A soft pastel Neovim colorscheme inspired by Minecraft, with one variant for eac
 
 - Three variants with matching semantic palettes
 - Sets `background` automatically (`light` for the Overworld, `dark` for the Nether and the End)
-- Treesitter, LSP diagnostics, diff and gitsigns support
+- Treesitter, LSP (semantic tokens, inlay hints, diagnostics) and diff support
+- [lualine](https://github.com/nvim-lualine/lualine.nvim) theme for each variant, picked up automatically
+- `:terminal` colors from the active palette
 - Optional transparent background
 - Written in Lua, no dependencies
+
+## 🔌 Supported plugins
+
+- [blink.cmp](https://github.com/Saghen/blink.cmp)
+- [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
+- [flash.nvim](https://github.com/folke/flash.nvim)
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [lazy.nvim](https://github.com/folke/lazy.nvim)
+- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+- [mini.icons](https://github.com/echasnovski/mini.icons)
+- [noice.nvim](https://github.com/folke/noice.nvim)
+- [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
+- [snacks.nvim](https://github.com/folke/snacks.nvim) (dashboard, picker, explorer, indent, notifier)
+- [trouble.nvim](https://github.com/folke/trouble.nvim)
+- [vimtex](https://github.com/lervag/vimtex)
+- [which-key.nvim](https://github.com/folke/which-key.nvim)
+
+Plugins that reuse Neovim's standard groups (such as todo-comments, grug-far or mason)
+pick up the theme colors without extra configuration.
 
 ## 📦 Installation
 
@@ -103,7 +124,8 @@ vim.api.nvim_set_hl(0, "MyGroup", { fg = c.orange, bg = c.bg_alt })
 
 Issues and pull requests are welcome, especially support for more plugins.
 Palettes live in [`lua/minecraft/palettes/`](lua/minecraft/palettes) and highlight
-groups in [`lua/minecraft/highlights.lua`](lua/minecraft/highlights.lua).
+groups in [`lua/minecraft/highlights.lua`](lua/minecraft/highlights.lua) (core) and
+[`lua/minecraft/plugins.lua`](lua/minecraft/plugins.lua) (plugins).
 
 ## 📄 License
 
