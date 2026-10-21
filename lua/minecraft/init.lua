@@ -1,29 +1,115 @@
+---@alias minecraft.Variant "overworld"|"nether"|"end"
+
+---@class minecraft.Palette
+---@field background "light"|"dark"
+---@field bg string
+---@field bg_alt string
+---@field bg_float string
+---@field cursorline string
+---@field selection string
+---@field border string
+---@field fg string
+---@field fg_dim string
+---@field comment string
+---@field line_nr string
+---@field red string
+---@field orange string
+---@field yellow string
+---@field green string
+---@field cyan string
+---@field blue string
+---@field purple string
+---@field brown string
+---@field emerald string
+---@field search string
+---@field on_search string
+
+---@class minecraft.Styles
+---@field comments? vim.api.keyset.highlight
+---@field keywords? vim.api.keyset.highlight
+---@field functions? vim.api.keyset.highlight
+---@field variables? vim.api.keyset.highlight
+---@field types? vim.api.keyset.highlight
+---@field strings? vim.api.keyset.highlight
+
+---@class minecraft.Config
+---@field variant? minecraft.Variant Variante por defecto
+---@field dark_variant? "nether"|"end" Variante al hacer `:set background=dark` desde el Overworld
+---@field transparent? boolean No pintar el fondo
+---@field styles? minecraft.Styles Atributos extra (italic, bold...) por tipo de elemento
+---@field on_colors? fun(colors: minecraft.Palette, variant: minecraft.Variant)
+---@field on_highlights? fun(highlights: table<string, vim.api.keyset.highlight>, colors: minecraft.Palette, variant: minecraft.Variant)
+
 local M = {}
 
+---@type minecraft.Variant[]
 M.variants = { "overworld", "nether", "end" }
 
+---@type minecraft.Config
 M.config = {
   variant = "overworld",
+  dark_variant = "nether",
   transparent = false,
-  italic_comments = true,
+  styles = {
+    comments = { italic = true },
+    keywords = {},
+    functions = {},
+    variables = {},
+    types = {},
+    strings = {},
+  },
+  on_colors = function(colors, variant) end,
+  on_highlights = function(highlights, colors, variant) end,
 }
 
+---@param opts? minecraft.Config
 function M.setup(opts)
   M.config = vim.tbl_deep_extend("force", M.config, opts or {})
 end
 
+-- Paleta de una variante con on_colors aplicado (copia, no modifica el módulo)
+---@param variant? minecraft.Variant
+---@return minecraft.Palette
 function M.palette(variant)
-  return require("minecraft.palettes." .. (variant or M.config.variant))
+  variant = variant or M.config.variant --[[@as minecraft.Variant]]
+  local colors = vim.deepcopy(require("minecraft.palettes." .. variant))
+  M.config.on_colors(colors, variant)
+  return colors
 end
 
+-- Si 'background' ya no coincide con la variante activa, es que el usuario lo
+-- cambió (:set background=...); en ese caso se elige la variante del otro modo
+---@param variant minecraft.Variant
+---@return minecraft.Variant
+local function resolve(variant)
+  local wanted = require("minecraft.palettes." .. variant).background
+  if vim.o.background == wanted or vim.g.colors_name ~= "minecraft-" .. variant then
+    return variant
+  end
+  if vim.o.background == "dark" then
+    return M._last_dark or M.config.dark_variant
+  end
+  for _, v in ipairs(M.variants) do
+    if require("minecraft.palettes." .. v).background == "light" then
+      return v
+    end
+  end
+  return variant
+end
+
+---@param variant? minecraft.Variant
 function M.load(variant)
   variant = variant or M.config.variant
   if not vim.tbl_contains(M.variants, variant) then
     vim.notify("minecraft: variante desconocida '" .. variant .. "'", vim.log.levels.ERROR)
     return
   end
+  variant = resolve(variant)
 
   local c = M.palette(variant)
+  if c.background == "dark" then
+    M._last_dark = variant
+  end
 
   if vim.g.colors_name then
     vim.cmd("hi clear")
@@ -36,7 +122,9 @@ function M.load(variant)
   vim.g.colors_name = "minecraft-" .. variant
 
   local highlights = require("minecraft.highlights")
-  for group, spec in pairs(highlights.get(c, M.config)) do
+  local groups = highlights.get(c, M.config)
+  M.config.on_highlights(groups, c, variant)
+  for group, spec in pairs(groups) do
     vim.api.nvim_set_hl(0, group, spec)
   end
   highlights.terminal(c)

@@ -6,7 +6,12 @@ local M = {}
 function M.get(c, o)
   local bg = o.transparent and "NONE" or c.bg
   local float_bg = o.transparent and "NONE" or c.bg_float
-  local italic = o.italic_comments
+  local s = o.styles
+
+  -- Agrega los atributos configurados en styles a un grupo
+  local function style(spec, extra)
+    return vim.tbl_extend("force", spec, extra or {})
+  end
 
   -- Fondos suaves derivados de los acentos
   local soft = function(color, alpha)
@@ -72,30 +77,30 @@ function M.get(c, o)
     SpellRare    = { sp = c.purple, undercurl = true },
 
     -- Sintaxis clásica
-    Comment      = { fg = c.comment, italic = italic },
+    Comment      = style({ fg = c.comment }, s.comments),
     Constant     = { fg = c.orange },
-    String       = { fg = c.green },
-    Character    = { fg = c.green },
+    String       = style({ fg = c.green }, s.strings),
+    Character    = style({ fg = c.green }, s.strings),
     Number       = { fg = c.orange },
     Boolean      = { fg = c.orange, bold = true },
     Float        = { fg = c.orange },
-    Identifier   = { fg = c.fg },
-    Function     = { fg = c.cyan },
-    Statement    = { fg = c.purple },
-    Conditional  = { fg = c.purple },
-    Repeat       = { fg = c.purple },
+    Identifier   = style({ fg = c.fg }, s.variables),
+    Function     = style({ fg = c.cyan }, s.functions),
+    Statement    = style({ fg = c.purple }, s.keywords),
+    Conditional  = style({ fg = c.purple }, s.keywords),
+    Repeat       = style({ fg = c.purple }, s.keywords),
     Label        = { fg = c.purple },
     Operator     = { fg = c.fg_dim },
-    Keyword      = { fg = c.purple },
+    Keyword      = style({ fg = c.purple }, s.keywords),
     Exception    = { fg = c.red },
     PreProc      = { fg = c.red },
     Include      = { fg = c.red },
     Define       = { fg = c.red },
     Macro        = { fg = c.red },
-    Type         = { fg = c.yellow },
-    StorageClass = { fg = c.yellow },
-    Structure    = { fg = c.yellow },
-    Typedef      = { fg = c.yellow },
+    Type         = style({ fg = c.yellow }, s.types),
+    StorageClass = style({ fg = c.yellow }, s.types),
+    Structure    = style({ fg = c.yellow }, s.types),
+    Typedef      = style({ fg = c.yellow }, s.types),
     Special      = { fg = c.emerald },
     SpecialChar  = { fg = c.emerald },
     Delimiter    = { fg = c.fg_dim },
@@ -104,7 +109,7 @@ function M.get(c, o)
     Todo         = { fg = c.bg, bg = c.yellow, bold = true },
 
     -- Treesitter
-    ["@variable"]           = { fg = c.fg },
+    ["@variable"]           = style({ fg = c.fg }, s.variables),
     ["@variable.builtin"]   = { fg = c.red, italic = true },
     ["@variable.parameter"] = { fg = c.brown },
     ["@variable.member"]    = { fg = c.blue },
@@ -115,14 +120,14 @@ function M.get(c, o)
     ["@string.regexp"]      = { fg = c.emerald },
     ["@string.special"]     = { fg = c.emerald },
     ["@character.special"]  = { fg = c.emerald },
-    ["@type.builtin"]       = { fg = c.yellow, italic = true },
+    ["@type.builtin"]       = style({ fg = c.yellow, italic = true }, s.types),
     ["@attribute"]          = { fg = c.emerald },
-    ["@function.builtin"]   = { fg = c.cyan, italic = true },
-    ["@function.method"]    = { fg = c.cyan },
+    ["@function.builtin"]   = style({ fg = c.cyan, italic = true }, s.functions),
+    ["@function.method"]    = style({ fg = c.cyan }, s.functions),
     ["@constructor"]        = { fg = c.yellow },
-    ["@keyword.return"]     = { fg = c.red },
-    ["@keyword.import"]     = { fg = c.red },
-    ["@keyword.operator"]   = { fg = c.purple },
+    ["@keyword.return"]     = style({ fg = c.red }, s.keywords),
+    ["@keyword.import"]     = style({ fg = c.red }, s.keywords),
+    ["@keyword.operator"]   = style({ fg = c.purple }, s.keywords),
     ["@punctuation"]        = { fg = c.fg_dim },
     ["@punctuation.special"] = { fg = c.emerald },
     ["@tag"]                = { fg = c.red },

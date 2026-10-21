@@ -86,19 +86,56 @@ vim.cmd.colorscheme("minecraft-end")
 :colorscheme minecraft-end
 ```
 
+The theme follows `'background'`: `:set background=light` switches to the Overworld,
+and `:set background=dark` goes back to the last dark dimension you used
+(or `dark_variant` the first time).
+
 ## ⚙️ Configuration
 
 Default options:
 
 ```lua
 require("minecraft").setup({
-  variant = "overworld",  -- "overworld" | "nether" | "end"
-  transparent = false,    -- don't set a background color
-  italic_comments = true,
+  variant = "overworld",   -- "overworld" | "nether" | "end"
+  dark_variant = "nether", -- used by `:set background=dark` from the Overworld
+  transparent = false,     -- don't set a background color
+  -- Extra attributes per element; any `:h nvim_set_hl` key works (italic, bold, underline...)
+  styles = {
+    comments = { italic = true },
+    keywords = {},
+    functions = {},
+    variables = {},
+    types = {},
+    strings = {},
+  },
+  -- Change palette colors. Receives a copy, so edit it in place
+  on_colors = function(colors, variant) end,
+  -- Change highlight groups. Receives a copy, so edit it in place
+  on_highlights = function(highlights, colors, variant) end,
 })
 ```
 
-The palette of any variant is available for your own highlights or statusline:
+Examples:
+
+```lua
+require("minecraft").setup({
+  styles = { keywords = { italic = true } },
+  on_colors = function(colors, variant)
+    if variant == "nether" then
+      colors.bg = "#120f10" -- darker blackstone
+    end
+  end,
+  on_highlights = function(hl, colors)
+    hl.CursorLineNr = { fg = colors.green, bold = true }
+    hl.LineNr = { link = "Comment" }
+  end,
+})
+```
+
+The options are annotated for [lua_ls](https://github.com/LuaLS/lua-language-server),
+so you get completion inside `setup()`.
+
+The palette of any variant (with `on_colors` applied) is available for your own highlights or statusline:
 
 ```lua
 local c = require("minecraft").palette("nether")
