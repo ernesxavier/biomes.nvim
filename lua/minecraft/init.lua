@@ -35,9 +35,11 @@ function M.load(variant)
   vim.o.termguicolors = true
   vim.g.colors_name = "minecraft-" .. variant
 
-  for group, spec in pairs(require("minecraft.highlights").get(c, M.config)) do
+  local highlights = require("minecraft.highlights")
+  for group, spec in pairs(highlights.get(c, M.config)) do
     vim.api.nvim_set_hl(0, group, spec)
   end
+  highlights.terminal(c)
 end
 
 return M
