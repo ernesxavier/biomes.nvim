@@ -203,7 +203,8 @@ function M.get(c, o)
     Removed      = { fg = c.red },
   }
 
-  for group, spec in pairs(require("minecraft.plugins").get(c, o, soft)) do
+  local ctx = { soft = soft, float_bg = float_bg }
+  for group, spec in pairs(require("minecraft.plugins").get(c, o, ctx)) do
     groups[group] = spec
   end
   return groups

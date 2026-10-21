@@ -39,6 +39,19 @@ A soft pastel Neovim colorscheme inspired by Minecraft, with one variant for eac
 Plugins that reuse Neovim's standard groups (such as todo-comments, grug-far or mason)
 pick up the theme colors without extra configuration.
 
+Only the groups of the plugins you have installed are loaded, detected through
+lazy.nvim or `vim.pack`. Without either of them, all supported plugins are loaded.
+You can override this with the `plugins` option:
+
+```lua
+plugins = {
+  all = false,       -- load every supported plugin
+  auto = true,       -- load only installed plugins
+  snacks = false,    -- disable one (module name or "snacks.nvim")
+  vimtex = true,     -- force one
+}
+```
+
 ## 📦 Installation
 
 Requires Neovim 0.8+ with `termguicolors`.
@@ -162,7 +175,8 @@ vim.api.nvim_set_hl(0, "MyGroup", { fg = c.orange, bg = c.bg_alt })
 Issues and pull requests are welcome, especially support for more plugins.
 Palettes live in [`lua/minecraft/palettes/`](lua/minecraft/palettes) and highlight
 groups in [`lua/minecraft/highlights.lua`](lua/minecraft/highlights.lua) (core) and
-[`lua/minecraft/plugins.lua`](lua/minecraft/plugins.lua) (plugins).
+[`lua/minecraft/plugins/`](lua/minecraft/plugins) (one file per plugin). To add a plugin,
+create its file and register it in [`plugins/init.lua`](lua/minecraft/plugins/init.lua).
 
 ## 📄 License
 

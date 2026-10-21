@@ -32,11 +32,17 @@
 ---@field types? vim.api.keyset.highlight
 ---@field strings? vim.api.keyset.highlight
 
+---@class minecraft.PluginsConfig
+---@field all? boolean Cargar los grupos de todos los plugins soportados
+---@field auto? boolean Cargar solo los de plugins instalados (lazy.nvim / vim.pack)
+---@field [string] boolean Activar o desactivar uno: `snacks = false`, `["snacks.nvim"] = false`
+
 ---@class minecraft.Config
 ---@field variant? minecraft.Variant Variante por defecto
 ---@field dark_variant? "nether"|"end" Variante al hacer `:set background=dark` desde el Overworld
 ---@field transparent? boolean No pintar el fondo
 ---@field styles? minecraft.Styles Atributos extra (italic, bold...) por tipo de elemento
+---@field plugins? minecraft.PluginsConfig Qué grupos de plugins cargar
 ---@field on_colors? fun(colors: minecraft.Palette, variant: minecraft.Variant)
 ---@field on_highlights? fun(highlights: table<string, vim.api.keyset.highlight>, colors: minecraft.Palette, variant: minecraft.Variant)
 
@@ -57,6 +63,10 @@ M.config = {
     variables = {},
     types = {},
     strings = {},
+  },
+  plugins = {
+    all = false,
+    auto = true,
   },
   on_colors = function(colors, variant) end,
   on_highlights = function(highlights, colors, variant) end,
