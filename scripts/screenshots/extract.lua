@@ -11,7 +11,7 @@ local out_path = vim.env.SCREENSHOT_JSON or (here .. "/highlights.json")
 local SAMPLES = { "difusion.jl", "notas.md" }
 
 vim.cmd("filetype on")
-local minecraft = require("minecraft")
+local biomes = require("biomes")
 
 local function hex(n)
   return n and string.format("#%06x", n) or nil
@@ -58,8 +58,8 @@ local function runs(buf, row, line, base)
 end
 
 local result = {}
-for _, variant in ipairs(minecraft.variants) do
-  vim.cmd.colorscheme("minecraft-" .. variant)
+for _, variant in ipairs(biomes.variants) do
+  vim.cmd.colorscheme("biomes-" .. variant)
   local normal = vim.api.nvim_get_hl(0, { name = "Normal", link = false })
   local base = { fg = hex(normal.fg), bg = hex(normal.bg) }
   local files = {}
@@ -77,8 +77,8 @@ for _, variant in ipairs(minecraft.variants) do
   end
   result[#result + 1] = {
     variant = variant,
-    palette = minecraft.palette(variant),
-    lualine = require("minecraft.lualine").theme(variant),
+    palette = biomes.palette(variant),
+    lualine = require("biomes.lualine").theme(variant),
     files = files,
   }
 end

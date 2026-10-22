@@ -1,4 +1,4 @@
--- Especificación de las paletas de minecraft.nvim.
+-- Especificación de las paletas de biomes.nvim.
 -- Generada con `nvim -l scripts/palettes.lua extract` y pensada para editarse a mano;
 -- después de editarla, `nvim -l scripts/palettes.lua` reescribe las paletas.
 --

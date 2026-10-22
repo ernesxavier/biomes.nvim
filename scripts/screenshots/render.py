@@ -113,7 +113,7 @@ def window(v):
     for i, c in enumerate((p["red"], p["yellow"], p["green"])):
         cx, cy, r = (14 + i * 18) * SCALE, title_h / 2, 5 * SCALE
         d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=c)
-    name = f"minecraft-{v['variant']}"
+    name = f"biomes-{v['variant']}"
     text(d, (width - CHAR * len(name)) / 2, (title_h - LINE) / 2, name, p["fg_dim"])
 
     # Pestañas

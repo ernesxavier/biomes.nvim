@@ -1,0 +1,290 @@
+*biomes.txt*     Soft pastel colorscheme for Neovim inspired by Minecraft
+
+==============================================================================
+CONTENTS                                                     *biomes-contents*
+
+  1. Introduction ........................... |biomes-introduction|
+  2. Installation ........................... |biomes-installation|
+  3. Usage .................................. |biomes-usage|
+  4. Configuration .......................... |biomes-config|
+     4.1 Styles ............................. |biomes-styles|
+     4.2 Plugins ............................ |biomes-plugins|
+     4.3 Hooks .............................. |biomes-hooks|
+  5. Lua API ................................ |biomes-api|
+  6. Lualine ................................ |biomes-lualine|
+  7. Palette roles .......................... |biomes-palette|
+
+==============================================================================
+1. INTRODUCTION                                          *biomes-introduction*
+
+biomes.nvim is a pastel colorscheme inspired by Minecraft, with three light
+Overworld biomes and three dark places:
+
+  Variant      'background'  Inspiration ~
+  plains       light         birch, grass, flowers, redstone, gold, diamond
+  cherry       light         Cherry Grove: petals, cherry wood, lavender
+  snowy        light         snow, blue ice, spruces, foxes, sweet berries
+  nether       dark          blackstone, lava, glowstone, quartz, fungi
+  end          dark          the void, end stone, purpur, chorus plants
+  deep_dark    dark          deepslate, glowing sculk, the Ancient City
+
+Requires Neovim 0.8 or later and 'termguicolors' (set automatically).
+
+Not an official Minecraft product. Not approved by or associated with Mojang
+or Microsoft.
+
+==============================================================================
+2. INSTALLATION                                          *biomes-installation*
+
+With lazy.nvim: >lua
+    {
+      "ernesxavier/biomes.nvim",
+      name = "biomes",
+      lazy = false,
+      priority = 1000,
+      opts = { variant = "plains" },
+      config = function(_, opts)
+        require("biomes").setup(opts)
+        vim.cmd.colorscheme("biomes")
+      end,
+    }
+<
+With vim.pack (Neovim 0.12+): >lua
+    vim.pack.add({ "https://github.com/ernesxavier/biomes.nvim" })
+    vim.cmd.colorscheme("biomes-end")
+<
+==============================================================================
+3. USAGE                                                        *biomes-usage*
+
+                       *biomes-plains*          *biomes-cherry* *biomes-snowy*
+                      *biomes-nether*          *biomes-end* *biomes-deep_dark*
+>vim
+    :colorscheme biomes            " variant from setup()
+    :colorscheme biomes-plains
+    :colorscheme biomes-cherry
+    :colorscheme biomes-snowy
+    :colorscheme biomes-nether
+    :colorscheme biomes-end
+    :colorscheme biomes-deep_dark
+<
+                                                           *biomes-background*
+The theme follows 'background':
+
+- `:set background=light` goes back to the last light variant used in the
+  session, or to `light_variant` the first time.
+- `:set background=dark` goes back to the last dark variant used in the
+  session, or to `dark_variant` the first time.
+
+Loading a variant explicitly with |:colorscheme| always wins: its
+'background' is set to match.
+
+==============================================================================
+4. CONFIGURATION                                               *biomes-config*
+
+Call `setup()` before loading the colorscheme. Defaults: >lua
+    require("biomes").setup({
+      variant = "plains",
+      light_variant = "plains",
+      dark_variant = "nether",
+      transparent = false,
+      dim_inactive = false,
+      styles = {
+        comments = { italic = true },
+        keywords = {},
+        functions = {},
+        variables = {},
+        types = {},
+        strings = {},
+        operators = {},
+        sidebars = "shaded",
+        floats = "shaded",
+      },
+      plugins = { all = false, auto = true },
+      on_colors = function(colors, variant) end,
+      on_highlights = function(highlights, colors, variant) end,
+    })
+<
+The options are annotated for lua_ls (`biomes.Config`), so completion
+works inside `setup()`.
+
+                                                       *biomes-config-variant*
+variant ~
+    Any variant name. Used by `:colorscheme biomes`.
+
+                                                 *biomes-config-light_variant*
+light_variant ~
+    `"plains"`, `"cherry"` or `"snowy"`. Variant chosen by
+    `:set background=light` when no light variant has been used yet. See
+    |biomes-background|.
+
+                                                  *biomes-config-dark_variant*
+dark_variant ~
+    `"nether"`, `"end"` or `"deep_dark"`. Variant chosen by
+    `:set background=dark` when no dark variant has been used yet.
+
+                                                   *biomes-config-transparent*
+transparent ~
+    Don't set a background color. Also makes sidebars and floating windows
+    transparent, overriding `styles.sidebars` and `styles.floats`.
+
+                                                  *biomes-config-dim_inactive*
+dim_inactive ~
+    Dim the background of unfocused windows (|hl-NormalNC|). Dark variants
+    get darker; light variants get a light shade. Ignored with
+    `transparent`.
+
+------------------------------------------------------------------------------
+4.1 STYLES                                                     *biomes-styles*
+
+Syntax styles ~
+    `comments`, `keywords`, `functions`, `variables`, `types`, `strings` and
+    `operators` take any attribute accepted by |nvim_set_hl()|, merged into
+    the corresponding groups: >lua
+    styles = {
+      comments = { italic = false },
+      keywords = { italic = true },
+      functions = { bold = true },
+    }
+<
+Panel styles ~
+    `sidebars` (neo-tree, nvim-tree, trouble) and `floats` (floating
+    windows, pickers, which-key, completion docs, notifications) take:
+
+    `"shaded"`        own background with some contrast (default)
+    `"normal"`        same background as the editor
+    `"transparent"`   no background
+
+    Sidebar separators are hidden when the sidebar is `"shaded"`, since the
+    background change already marks the edge.
+
+    Note: the snacks.nvim explorer uses the same groups as its floating
+    picker, so it follows `floats`.
+
+------------------------------------------------------------------------------
+4.2 PLUGINS                                                   *biomes-plugins*
+
+Only the highlight groups of installed plugins are loaded. They are
+detected through lazy.nvim, or through |vim.pack| when it is in use. With no
+plugin manager to ask, every supported plugin is loaded.
+
+    `all`     load every supported plugin
+    `auto`    load only installed plugins (default)
+
+Any plugin can be forced on or off, by module name or by repository
+name: >lua
+    plugins = {
+      snacks = false,
+      ["which-key.nvim"] = false,
+      telescope = true,
+      mini = false,           -- every mini.* module
+    }
+<
+Supported plugins ~
+    blink.cmp, bufferline.nvim, flash.nvim, fzf-lua, gitsigns.nvim,
+    indent-blankline.nvim, lazy.nvim, mini.nvim (clue, cursorword, diff,
+    files, hipatterns, icons, indentscope, jump, jump2d, notify, pick,
+    starter, statusline, surround, tabline, trailspace), neo-tree.nvim,
+    noice.nvim, nvim-cmp, nvim-dap, nvim-navic, nvim-notify, nvim-tree.lua,
+    nvim-treesitter-context, rainbow-delimiters.nvim, render-markdown.nvim,
+    snacks.nvim, telescope.nvim, trouble.nvim, vim-illuminate, vimtex,
+    which-key.nvim.
+
+                                                            *biomes-lsp-kinds*
+Completion menus and breadcrumbs (blink.cmp, nvim-cmp, navic) link their
+kind groups to shared `LspKind<Kind>` groups, e.g. `LspKindFunction`.
+Override one of those to change a kind everywhere.
+
+------------------------------------------------------------------------------
+4.3 HOOKS                                                       *biomes-hooks*
+
+                                                     *biomes-config-on_colors*
+on_colors({colors}, {variant}) ~
+    Called with a copy of the palette before the highlights are built.
+    Edit it in place; see |biomes-palette| for the roles. >lua
+    on_colors = function(colors, variant)
+      if variant == "nether" then
+        colors.bg = "#120f10"
+      end
+    end,
+<
+                                                 *biomes-config-on_highlights*
+on_highlights({highlights}, {colors}, {variant}) ~
+    Called with the final table of highlight groups, before they are set.
+    Each value is an |nvim_set_hl()| spec. >lua
+    on_highlights = function(hl, colors)
+      hl.CursorLineNr = { fg = colors.green, bold = true }
+      hl.LineNr = { link = "Comment" }
+    end,
+<
+==============================================================================
+5. LUA API                                                        *biomes-api*
+
+                                                              *biomes.setup()*
+require("biomes").setup({opts})
+    Merge {opts} into the configuration. See |biomes-config|.
+
+                                                               *biomes.load()*
+require("biomes").load({variant})
+    Load a variant, or the configured one when {variant} is nil. Same as
+    `:colorscheme biomes-{variant}`.
+
+                                                            *biomes.palette()*
+require("biomes").palette({variant})
+    Return a copy of the palette of {variant} (default: the configured one)
+    with `on_colors` applied. Useful for your own highlights: >lua
+    local c = require("biomes").palette("nether")
+    vim.api.nvim_set_hl(0, "MyGroup", { fg = c.orange, bg = c.bg_alt })
+<
+                                                             *biomes.variants*
+require("biomes").variants
+    List of variant names, light ones first.
+
+==============================================================================
+6. LUALINE                                                    *biomes-lualine*
+
+A lualine theme is included for each variant. With `theme = "auto"` lualine
+picks the one matching the active variant. To set it explicitly: >lua
+    require("lualine").setup({ options = { theme = "biomes" } })
+<
+`"biomes"` follows the active variant; `"biomes-nether"` and friends
+are fixed to one variant.
+
+==============================================================================
+7. PALETTE ROLES                                              *biomes-palette*
+
+Every variant defines the same roles, so `on_colors` and `palette()` work the
+same way for all of them.
+
+  Role          Used for ~
+  background    `"light"` or `"dark"`, sets 'background'
+  bg            editor background
+  bg_alt        sidebars, statusline, folded lines
+  bg_float      floating windows and menus
+  cursorline    |hl-CursorLine|
+  selection     |hl-Visual|, selected menu items
+  border        window borders and separators
+  fg            default text
+  fg_dim        secondary text in the interface
+  comment       comments, inlay hints
+  line_nr       line numbers, file tree indent markers
+  red           errors, preprocessor, tags
+  orange        constants, booleans
+  yellow        types, warnings
+  green         strings, additions
+  cyan          functions
+  blue          properties, info
+  purple        keywords
+  brown         parameters
+  emerald       special characters, escapes, hints
+  operator      operators; bold for keyword operators (`in`, `isa`, `and`)
+  number        numbers
+  punct         brackets, commas and delimiters
+  math          equations in Markdown (`$...$`) and LaTeX (vimtex)
+  math_bg       band behind equations, in a hue far from `math`
+  accent        identity color: normal mode, active tab, selected menu
+                item, picker titles. Other modes switch to green when
+                they share its color
+  search        background of |hl-Search|
+  on_search     text on top of `search`
+
+ vim:tw=78:ts=8:ft=help:norl:

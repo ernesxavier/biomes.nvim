@@ -1,7 +1,7 @@
--- Generador de las paletas de minecraft.nvim
+-- Generador de las paletas de biomes.nvim
 --
 -- Uso, desde la raíz del repositorio:
---   nvim -l scripts/palettes.lua           escribe lua/minecraft/palettes/*.lua desde scripts/spec.lua
+--   nvim -l scripts/palettes.lua           escribe lua/biomes/palettes/*.lua desde scripts/spec.lua
 --   nvim -l scripts/palettes.lua check     solo muestra el reporte, sin escribir nada
 --   nvim -l scripts/palettes.lua extract   reconstruye scripts/spec.lua desde las paletas actuales
 --
@@ -12,7 +12,7 @@
 
 local ROOT = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":p:h:h")
 local SPEC = ROOT .. "/scripts/spec.lua"
-local PALETTES = ROOT .. "/lua/minecraft/palettes/"
+local PALETTES = ROOT .. "/lua/biomes/palettes/"
 
 local VARIANTS = { "plains", "cherry", "snowy", "nether", "end", "deep_dark" }
 
@@ -235,7 +235,7 @@ end
 
 local function extract()
   local out = {
-    "-- Especificación de las paletas de minecraft.nvim.",
+    "-- Especificación de las paletas de biomes.nvim.",
     "-- Generada con `nvim -l scripts/palettes.lua extract` y pensada para editarse a mano;",
     "-- después de editarla, `nvim -l scripts/palettes.lua` reescribe las paletas.",
     "--",

@@ -1,7 +1,10 @@
-# ⛏️ minecraft.nvim
+# ⛏️ biomes.nvim
 
 A soft pastel Neovim colorscheme inspired by Minecraft: three light Overworld
 biomes and three dark places.
+
+> [!NOTE]
+> Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.
 
 | Variant | Mode | Inspiration |
 |---|---|---|
@@ -12,7 +15,7 @@ biomes and three dark places.
 | 🌌 **End** | 🌙 dark | the void, end stone, purpur, chorus plants and ender pearls |
 | 🌑 **Deep Dark** | 🌙 dark | deepslate, glowing sculk and the Ancient City |
 
-![The six minecraft.nvim variants](assets/screenshots/overview.png)
+![The six biomes.nvim variants](assets/screenshots/overview.png)
 
 <details>
 <summary>Each variant in full size</summary>
@@ -106,16 +109,16 @@ Requires Neovim 0.8+ with `termguicolors`.
 
 ```lua
 {
-  "ernesxavier/minecraft.nvim",
-  name = "minecraft",
+  "ernesxavier/biomes.nvim",
+  name = "biomes",
   lazy = false,
   priority = 1000,
   opts = {
     variant = "plains", -- "plains" | "cherry" | "snowy" | "nether" | "end" | "deep_dark"
   },
   config = function(_, opts)
-    require("minecraft").setup(opts)
-    vim.cmd.colorscheme("minecraft")
+    require("biomes").setup(opts)
+    vim.cmd.colorscheme("biomes")
   end,
 }
 ```
@@ -124,31 +127,31 @@ Requires Neovim 0.8+ with `termguicolors`.
 
 ```lua
 return {
-  { "ernesxavier/minecraft.nvim", name = "minecraft", opts = { variant = "nether" } },
-  { "LazyVim/LazyVim", opts = { colorscheme = "minecraft" } },
+  { "ernesxavier/biomes.nvim", name = "biomes", opts = { variant = "nether" } },
+  { "LazyVim/LazyVim", opts = { colorscheme = "biomes" } },
 }
 ```
 
 ### `vim.pack` (Neovim 0.12+)
 
 ```lua
-vim.pack.add({ "https://github.com/ernesxavier/minecraft.nvim" })
-vim.cmd.colorscheme("minecraft-end")
+vim.pack.add({ "https://github.com/ernesxavier/biomes.nvim" })
+vim.cmd.colorscheme("biomes-end")
 ```
 
 ## 🚀 Usage
 
 ```vim
-:colorscheme minecraft            " uses the variant from setup()
-:colorscheme minecraft-plains
-:colorscheme minecraft-cherry
-:colorscheme minecraft-snowy
-:colorscheme minecraft-nether
-:colorscheme minecraft-end
-:colorscheme minecraft-deep_dark
+:colorscheme biomes            " uses the variant from setup()
+:colorscheme biomes-plains
+:colorscheme biomes-cherry
+:colorscheme biomes-snowy
+:colorscheme biomes-nether
+:colorscheme biomes-end
+:colorscheme biomes-deep_dark
 ```
 
-Full documentation is available inside Neovim with `:help minecraft`.
+Full documentation is available inside Neovim with `:help biomes`.
 
 The theme follows `'background'`: `:set background=light` goes back to the last light
 variant you used and `:set background=dark` to the last dark one (or `light_variant` /
@@ -159,7 +162,7 @@ variant you used and `:set background=dark` to the last dark one (or `light_vari
 Default options:
 
 ```lua
-require("minecraft").setup({
+require("biomes").setup({
   variant = "plains",      -- "plains" | "cherry" | "snowy" | "nether" | "end" | "deep_dark"
   light_variant = "plains", -- first `:set background=light` of the session
   dark_variant = "nether", -- first `:set background=dark` of the session
@@ -188,7 +191,7 @@ require("minecraft").setup({
 Examples:
 
 ```lua
-require("minecraft").setup({
+require("biomes").setup({
   styles = { keywords = { italic = true } },
   on_colors = function(colors, variant)
     if variant == "nether" then
@@ -208,7 +211,7 @@ so you get completion inside `setup()`.
 The palette of any variant (with `on_colors` applied) is available for your own highlights or statusline:
 
 ```lua
-local c = require("minecraft").palette("nether")
+local c = require("biomes").palette("nether")
 vim.api.nvim_set_hl(0, "MyGroup", { fg = c.orange, bg = c.bg_alt })
 ```
 
@@ -269,10 +272,10 @@ Dark variants:
 ## 🤝 Contributing
 
 Issues and pull requests are welcome, especially support for more plugins.
-Palettes live in [`lua/minecraft/palettes/`](lua/minecraft/palettes) and highlight
-groups in [`lua/minecraft/highlights.lua`](lua/minecraft/highlights.lua) (core) and
-[`lua/minecraft/plugins/`](lua/minecraft/plugins) (one file per plugin). To add a plugin,
-create its file and register it in [`plugins/init.lua`](lua/minecraft/plugins/init.lua).
+Palettes live in [`lua/biomes/palettes/`](lua/biomes/palettes) and highlight
+groups in [`lua/biomes/highlights.lua`](lua/biomes/highlights.lua) (core) and
+[`lua/biomes/plugins/`](lua/biomes/plugins) (one file per plugin). To add a plugin,
+create its file and register it in [`plugins/init.lua`](lua/biomes/plugins/init.lua).
 
 ### Palettes
 
@@ -280,7 +283,7 @@ The palette files are generated. Edit [`scripts/spec.lua`](scripts/spec.lua), wh
 color is written in OKLCH (lightness, chroma, hue), then regenerate them:
 
 ```sh
-nvim -l scripts/palettes.lua           # write lua/minecraft/palettes/*.lua
+nvim -l scripts/palettes.lua           # write lua/biomes/palettes/*.lua
 nvim -l scripts/palettes.lua check     # only print the report
 nvim -l scripts/palettes.lua extract   # rebuild the spec from the palette files
 ```
@@ -302,8 +305,17 @@ Mono Nerd Font). After changing colors:
 python3 scripts/screenshots/render.py
 ```
 
+## 🙏 Acknowledgments
+
+- [kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim),
+  [catppuccin/nvim](https://github.com/catppuccin/nvim) and
+  [tokyonight.nvim](https://github.com/folke/tokyonight.nvim), whose structure,
+  plugin coverage and semantic token mappings guided this theme.
+- [Björn Ottosson's OKLab](https://bottosson.github.io/posts/oklab/), the color space used
+  to build and check the palettes.
+- The [Minecraft Wiki](https://minecraft.wiki), for the game's map colors.
+
 ## 📄 License
 
 [MIT](LICENSE)
 
-*Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.*

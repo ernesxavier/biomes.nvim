@@ -1,1 +1,0 @@
-require("minecraft").load("nether")
