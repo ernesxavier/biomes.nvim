@@ -1,6 +1,7 @@
 ---@class minecraft.PluginContext
 ---@field soft fun(color: string, alpha?: number): string Fondo suave a partir de un acento
 ---@field float_bg string Fondo de ventanas flotantes (respeta transparent)
+---@field link_kinds fun(groups: table, pattern: string): table Enlaza `pattern` (p. ej. "CmpItemKind%s") a LspKind<Tipo>
 
 ---@alias minecraft.PluginGroups fun(c: minecraft.Palette, o: minecraft.Config, u: minecraft.PluginContext): table<string, vim.api.keyset.highlight>
 
@@ -9,18 +10,47 @@ local M = {}
 -- Nombre del plugin (como lo registra el gestor) → módulo en minecraft.plugins
 -- stylua: ignore
 M.plugins = {
-  ["blink.cmp"]            = "blink",
-  ["bufferline.nvim"]      = "bufferline",
-  ["flash.nvim"]           = "flash",
-  ["gitsigns.nvim"]        = "gitsigns",
-  ["lazy.nvim"]            = "lazy",
-  ["mini.icons"]           = "mini_icons",
-  ["noice.nvim"]           = "noice",
-  ["render-markdown.nvim"] = "render_markdown",
-  ["snacks.nvim"]          = "snacks",
-  ["trouble.nvim"]         = "trouble",
-  ["vimtex"]               = "vimtex",
-  ["which-key.nvim"]       = "which_key",
+  ["blink.cmp"]               = "blink",
+  ["bufferline.nvim"]         = "bufferline",
+  ["flash.nvim"]              = "flash",
+  ["fzf-lua"]                 = "fzf",
+  ["gitsigns.nvim"]           = "gitsigns",
+  ["indent-blankline.nvim"]   = "indent_blankline",
+  ["lazy.nvim"]               = "lazy",
+  ["neo-tree.nvim"]           = "neo_tree",
+  ["noice.nvim"]              = "noice",
+  ["nvim-cmp"]                = "cmp",
+  ["nvim-dap"]                = "dap",
+  ["nvim-navic"]              = "navic",
+  ["nvim-notify"]             = "notify",
+  ["nvim-tree.lua"]           = "nvim_tree",
+  ["nvim-treesitter-context"] = "treesitter_context",
+  ["rainbow-delimiters.nvim"] = "rainbow_delimiters",
+  ["render-markdown.nvim"]    = "render_markdown",
+  ["snacks.nvim"]             = "snacks",
+  ["telescope.nvim"]          = "telescope",
+  ["trouble.nvim"]            = "trouble",
+  ["vim-illuminate"]          = "illuminate",
+  ["vimtex"]                  = "vimtex",
+  ["which-key.nvim"]          = "which_key",
+  -- mini.nvim completo o sus módulos sueltos comparten un archivo
+  ["mini.nvim"]               = "mini",
+  ["mini.clue"]               = "mini",
+  ["mini.cursorword"]         = "mini",
+  ["mini.diff"]               = "mini",
+  ["mini.files"]              = "mini",
+  ["mini.hipatterns"]         = "mini",
+  ["mini.icons"]              = "mini",
+  ["mini.indentscope"]        = "mini",
+  ["mini.jump"]               = "mini",
+  ["mini.jump2d"]             = "mini",
+  ["mini.notify"]             = "mini",
+  ["mini.pick"]               = "mini",
+  ["mini.starter"]            = "mini",
+  ["mini.statusline"]         = "mini",
+  ["mini.surround"]           = "mini",
+  ["mini.tabline"]            = "mini",
+  ["mini.trailspace"]         = "mini",
 }
 
 -- Nombres de los plugins instalados según lazy.nvim y vim.pack; nil si no
@@ -47,14 +77,6 @@ local function installed()
       end
     end
   end
-  -- mini.nvim trae todos los módulos mini.* en un solo plugin
-  if found and found["mini.nvim"] then
-    for name in pairs(M.plugins) do
-      if name:find("^mini%.") then
-        found[name] = true
-      end
-    end
-  end
   return found
 end
 
@@ -63,7 +85,7 @@ end
 ---@return string[]
 function M.enabled(opts)
   local present = (opts.all or not opts.auto) and nil or installed()
-  local modules = {}
+  local modules, seen = {}, {}
   for name, mod in pairs(M.plugins) do
     -- Se puede activar/desactivar por módulo ("snacks") o por nombre ("snacks.nvim")
     local use = opts[mod]
@@ -77,7 +99,8 @@ function M.enabled(opts)
         use = present == nil or present[name] == true
       end
     end
-    if use then
+    if use and not seen[mod] then
+      seen[mod] = true
       modules[#modules + 1] = mod
     end
   end

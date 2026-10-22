@@ -14,7 +14,10 @@ A soft pastel Neovim colorscheme inspired by Minecraft, with one variant for eac
 
 - Three variants with matching semantic palettes
 - Sets `background` automatically (`light` for the Overworld, `dark` for the Nether and the End)
-- Treesitter, LSP (semantic tokens, inlay hints, diagnostics) and diff support
+- Treesitter, LSP (semantic tokens, inlay hints, diagnostics) and diff support.
+  Semantic tokens link to the Treesitter colors, so code looks the same with or
+  without a language server, plus extra hints such as standard library functions
+  in italics
 - [lualine](https://github.com/nvim-lualine/lualine.nvim) theme for each variant, picked up automatically
 - `:terminal` colors from the active palette
 - Optional transparent background
@@ -25,16 +28,31 @@ A soft pastel Neovim colorscheme inspired by Minecraft, with one variant for eac
 - [blink.cmp](https://github.com/Saghen/blink.cmp)
 - [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
 - [flash.nvim](https://github.com/folke/flash.nvim)
+- [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
 - [lazy.nvim](https://github.com/folke/lazy.nvim)
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-- [mini.icons](https://github.com/echasnovski/mini.icons)
+- [mini.nvim](https://github.com/echasnovski/mini.nvim) (clue, cursorword, diff, files, hipatterns, icons, indentscope, jump, jump2d, notify, pick, starter, statusline, surround, tabline, trailspace)
+- [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
 - [noice.nvim](https://github.com/folke/noice.nvim)
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- [nvim-dap](https://github.com/mfussenegger/nvim-dap)
+- [nvim-navic](https://github.com/SmiteshP/nvim-navic)
+- [nvim-notify](https://github.com/rcarriga/nvim-notify)
+- [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
+- [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)
+- [rainbow-delimiters.nvim](https://github.com/HiPhish/rainbow-delimiters.nvim)
 - [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
 - [snacks.nvim](https://github.com/folke/snacks.nvim) (dashboard, picker, explorer, indent, notifier)
+- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 - [trouble.nvim](https://github.com/folke/trouble.nvim)
+- [vim-illuminate](https://github.com/RRethy/vim-illuminate)
 - [vimtex](https://github.com/lervag/vimtex)
 - [which-key.nvim](https://github.com/folke/which-key.nvim)
+
+Completion menus (blink.cmp, nvim-cmp) and breadcrumbs (navic) share the same
+`LspKind*` groups, so a symbol kind has the same color everywhere.
 
 Plugins that reuse Neovim's standard groups (such as todo-comments, grug-far or mason)
 pick up the theme colors without extra configuration.

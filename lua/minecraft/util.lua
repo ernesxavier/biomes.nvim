@@ -14,4 +14,25 @@ function M.blend(fg, bg, alpha)
   return string.format("#%02x%02x%02x", ch(r1, r2), ch(g1, g2), ch(b1, b2))
 end
 
+-- Tipos de símbolo LSP; los colores viven en los grupos LspKind<Tipo>
+-- stylua: ignore
+M.kind_names = {
+  "Array", "Boolean", "Class", "Color", "Constant", "Constructor", "Enum",
+  "EnumMember", "Event", "Field", "File", "Folder", "Function", "Interface",
+  "Key", "Keyword", "Method", "Module", "Namespace", "Null", "Number", "Object",
+  "Operator", "Package", "Property", "Reference", "Snippet", "String", "Struct",
+  "Text", "TypeParameter", "Unit", "Value", "Variable",
+}
+
+-- Enlaza los grupos de tipos de un plugin a LspKind<Tipo>.
+-- pattern: p. ej. "CmpItemKind%s" → CmpItemKindFunction = LspKindFunction
+---@param groups table<string, vim.api.keyset.highlight>
+---@param pattern string
+function M.link_kinds(groups, pattern)
+  for _, kind in ipairs(M.kind_names) do
+    groups[pattern:format(kind)] = { link = "LspKind" .. kind }
+  end
+  return groups
+end
+
 return M
