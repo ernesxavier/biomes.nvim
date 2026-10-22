@@ -17,12 +17,16 @@ CONTENTS                                                *minecraft-contents*
 ==============================================================================
 1. INTRODUCTION                                     *minecraft-introduction*
 
-minecraft.nvim is a pastel colorscheme with one variant per dimension:
+minecraft.nvim is a pastel colorscheme with three light Overworld biomes and
+three dark places:
 
   Variant      'background'  Inspiration ~
-  overworld    light         sand, birch, grass, redstone, gold, diamond
+  plains       light         birch, grass, flowers, redstone, gold, diamond
+  cherry       light         Cherry Grove: petals, cherry wood, lavender
+  snowy        light         snow, blue ice, spruces, foxes, sweet berries
   nether       dark          blackstone, lava, glowstone, quartz, fungi
   end          dark          the void, end stone, purpur, chorus plants
+  deep_dark    dark          deepslate, glowing sculk, the Ancient City
 
 Requires Neovim 0.8 or later and 'termguicolors' (set automatically).
 
@@ -35,7 +39,7 @@ With lazy.nvim: >lua
       name = "minecraft",
       lazy = false,
       priority = 1000,
-      opts = { variant = "overworld" },
+      opts = { variant = "plains" },
       config = function(_, opts)
         require("minecraft").setup(opts)
         vim.cmd.colorscheme("minecraft")
@@ -49,17 +53,22 @@ With vim.pack (Neovim 0.12+): >lua
 ==============================================================================
 3. USAGE                                                   *minecraft-usage*
 
-                      *minecraft-overworld* *minecraft-nether* *minecraft-end*
+                       *minecraft-plains* *minecraft-cherry* *minecraft-snowy*
+                      *minecraft-nether* *minecraft-end* *minecraft-deep_dark*
 >vim
     :colorscheme minecraft            " variant from setup()
-    :colorscheme minecraft-overworld
+    :colorscheme minecraft-plains
+    :colorscheme minecraft-cherry
+    :colorscheme minecraft-snowy
     :colorscheme minecraft-nether
     :colorscheme minecraft-end
+    :colorscheme minecraft-deep_dark
 <
                                                       *minecraft-background*
 The theme follows 'background':
 
-- `:set background=light` switches to the Overworld.
+- `:set background=light` goes back to the last light variant used in the
+  session, or to `light_variant` the first time.
 - `:set background=dark` goes back to the last dark variant used in the
   session, or to `dark_variant` the first time.
 
@@ -71,7 +80,8 @@ Loading a variant explicitly with |:colorscheme| always wins: its
 
 Call `setup()` before loading the colorscheme. Defaults: >lua
     require("minecraft").setup({
-      variant = "overworld",
+      variant = "plains",
+      light_variant = "plains",
       dark_variant = "nether",
       transparent = false,
       dim_inactive = false,
@@ -95,12 +105,18 @@ works inside `setup()`.
 
                                                   *minecraft-config-variant*
 variant ~
-    `"overworld"`, `"nether"` or `"end"`. Used by `:colorscheme minecraft`.
+    Any variant name. Used by `:colorscheme minecraft`.
+
+                                            *minecraft-config-light_variant*
+light_variant ~
+    `"plains"`, `"cherry"` or `"snowy"`. Variant chosen by
+    `:set background=light` when no light variant has been used yet. See
+    |minecraft-background|.
 
                                              *minecraft-config-dark_variant*
 dark_variant ~
-    `"nether"` or `"end"`. Variant chosen by `:set background=dark` when no
-    dark variant has been used yet. See |minecraft-background|.
+    `"nether"`, `"end"` or `"deep_dark"`. Variant chosen by
+    `:set background=dark` when no dark variant has been used yet.
 
                                               *minecraft-config-transparent*
 transparent ~
@@ -110,7 +126,7 @@ transparent ~
                                              *minecraft-config-dim_inactive*
 dim_inactive ~
     Dim the background of unfocused windows (|hl-NormalNC|). Dark variants
-    get darker; the Overworld gets a light shade. Ignored with
+    get darker; light variants get a light shade. Ignored with
     `transparent`.
 
 ------------------------------------------------------------------------------
@@ -217,7 +233,7 @@ require("minecraft").palette({variant})
 <
                                                        *minecraft.variants*
 require("minecraft").variants
-    List of variant names: `{ "overworld", "nether", "end" }`.
+    List of variant names, light ones first.
 
 ==============================================================================
 6. LUALINE                                               *minecraft-lualine*
@@ -247,14 +263,14 @@ same way for all of them.
   fg_dim        operators, punctuation, secondary text
   comment       comments, inlay hints
   line_nr       line numbers, file tree indent markers
-  red           redstone / netherrack: errors, preprocessor, tags
-  orange        copper / lava: constants, numbers
-  yellow        gold / glowstone: types, warnings
-  green         grass / warped fungus: strings, additions
-  cyan          diamond / soul fire: functions
-  blue          lapis: properties, info
-  purple        amethyst / purpur: keywords
-  brown         dirt / soul sand: parameters
+  red           errors, preprocessor, tags
+  orange        constants, numbers
+  yellow        types, warnings
+  green         strings, additions
+  cyan          functions
+  blue          properties, info
+  purple        keywords
+  brown         parameters
   emerald       special characters, escapes, hints
   search        background of |hl-Search|
   on_search     text on top of `search`

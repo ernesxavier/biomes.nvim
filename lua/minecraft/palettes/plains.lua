@@ -1,4 +1,4 @@
--- Overworld (claro): cielo de día, arena, abedul, pasto y minerales en pastel
+-- Plains (claro): pradera de día, abedul, pasto, flores y minerales en pastel
 return {
   background = "light",
 

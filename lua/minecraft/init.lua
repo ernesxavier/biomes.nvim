@@ -1,4 +1,6 @@
----@alias minecraft.Variant "overworld"|"nether"|"end"
+---@alias minecraft.LightVariant "plains"|"cherry"|"snowy"
+---@alias minecraft.DarkVariant "nether"|"end"|"deep_dark"
+---@alias minecraft.Variant minecraft.LightVariant|minecraft.DarkVariant
 
 ---@class minecraft.Palette
 ---@field background "light"|"dark"
@@ -46,7 +48,8 @@
 
 ---@class minecraft.Config
 ---@field variant? minecraft.Variant Variante por defecto
----@field dark_variant? "nether"|"end" Variante al hacer `:set background=dark` desde el Overworld
+---@field light_variant? minecraft.LightVariant Variante de `:set background=light` si aún no se usó una clara
+---@field dark_variant? minecraft.DarkVariant Variante de `:set background=dark` si aún no se usó una oscura
 ---@field transparent? boolean No pintar el fondo (también vuelve transparentes paneles y flotantes)
 ---@field dim_inactive? boolean Atenuar el fondo de las ventanas sin foco
 ---@field styles? minecraft.Styles Atributos extra (italic, bold...) por tipo de elemento
@@ -57,11 +60,12 @@
 local M = {}
 
 ---@type minecraft.Variant[]
-M.variants = { "overworld", "nether", "end" }
+M.variants = { "plains", "cherry", "snowy", "nether", "end", "deep_dark" }
 
 ---@type minecraft.Config
 M.config = {
-  variant = "overworld",
+  variant = "plains",
+  light_variant = "plains",
   dark_variant = "nether",
   transparent = false,
   dim_inactive = false,
@@ -98,8 +102,13 @@ function M.palette(variant)
   return colors
 end
 
+-- Última variante usada de cada modo en la sesión
+---@type table<"light"|"dark", minecraft.Variant>
+local last = {}
+
 -- Si 'background' ya no coincide con la variante activa, es que el usuario lo
--- cambió (:set background=...); en ese caso se elige la variante del otro modo
+-- cambió (:set background=...); en ese caso se vuelve a la última variante de
+-- ese modo, o a light_variant / dark_variant
 ---@param variant minecraft.Variant
 ---@return minecraft.Variant
 local function resolve(variant)
@@ -107,15 +116,8 @@ local function resolve(variant)
   if vim.o.background == wanted or vim.g.colors_name ~= "minecraft-" .. variant then
     return variant
   end
-  if vim.o.background == "dark" then
-    return M._last_dark or M.config.dark_variant
-  end
-  for _, v in ipairs(M.variants) do
-    if require("minecraft.palettes." .. v).background == "light" then
-      return v
-    end
-  end
-  return variant
+  local fallback = vim.o.background == "dark" and M.config.dark_variant or M.config.light_variant
+  return last[vim.o.background] or fallback --[[@as minecraft.Variant]]
 end
 
 ---@param variant? minecraft.Variant
@@ -128,9 +130,7 @@ function M.load(variant)
   variant = resolve(variant)
 
   local c = M.palette(variant)
-  if c.background == "dark" then
-    M._last_dark = variant
-  end
+  last[c.background] = variant
 
   if vim.g.colors_name then
     vim.cmd("hi clear")

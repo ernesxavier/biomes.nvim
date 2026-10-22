@@ -1,19 +1,24 @@
 # ⛏️ minecraft.nvim
 
-A soft pastel Neovim colorscheme inspired by Minecraft, with one variant for each dimension:
+A soft pastel Neovim colorscheme inspired by Minecraft: three light Overworld
+biomes and three dark places.
 
 | Variant | Mode | Inspiration |
 |---|---|---|
-| 🌳 **Overworld** | ☀️ light | sand, birch, grass, redstone, gold, diamond and lapis |
+| 🌾 **Plains** | ☀️ light | birch, grass, flowers, redstone, gold, diamond and lapis |
+| 🌸 **Cherry** | ☀️ light | Cherry Grove: petals, cherry wood, grass and lavender |
+| ❄️ **Snowy** | ☀️ light | snow, blue ice, spruces, foxes and sweet berries |
 | 🔥 **Nether** | 🌙 dark | blackstone, lava, glowstone, quartz, warped & crimson fungi, soul fire |
 | 🌌 **End** | 🌙 dark | the void, end stone, purpur, chorus plants and ender pearls |
+| 🌑 **Deep Dark** | 🌙 dark | deepslate, glowing sculk and the Ancient City |
 
 <!-- TODO: add screenshots of each variant -->
 
 ## ✨ Features
 
-- Three variants with matching semantic palettes
-- Sets `background` automatically (`light` for the Overworld, `dark` for the Nether and the End)
+- Six variants with matching semantic palettes
+- Sets `background` automatically, and `:set background=light/dark` switches between
+  your last light and dark variants
 - Treesitter, LSP (semantic tokens, inlay hints, diagnostics) and diff support.
   Semantic tokens link to the Treesitter colors, so code looks the same with or
   without a language server, plus extra hints such as standard library functions
@@ -83,7 +88,7 @@ Requires Neovim 0.8+ with `termguicolors`.
   lazy = false,
   priority = 1000,
   opts = {
-    variant = "overworld", -- "overworld" | "nether" | "end"
+    variant = "plains", -- "plains" | "cherry" | "snowy" | "nether" | "end" | "deep_dark"
   },
   config = function(_, opts)
     require("minecraft").setup(opts)
@@ -112,16 +117,19 @@ vim.cmd.colorscheme("minecraft-end")
 
 ```vim
 :colorscheme minecraft            " uses the variant from setup()
-:colorscheme minecraft-overworld
+:colorscheme minecraft-plains
+:colorscheme minecraft-cherry
+:colorscheme minecraft-snowy
 :colorscheme minecraft-nether
 :colorscheme minecraft-end
+:colorscheme minecraft-deep_dark
 ```
 
 Full documentation is available inside Neovim with `:help minecraft`.
 
-The theme follows `'background'`: `:set background=light` switches to the Overworld,
-and `:set background=dark` goes back to the last dark dimension you used
-(or `dark_variant` the first time).
+The theme follows `'background'`: `:set background=light` goes back to the last light
+variant you used and `:set background=dark` to the last dark one (or `light_variant` /
+`dark_variant` the first time).
 
 ## ⚙️ Configuration
 
@@ -129,8 +137,9 @@ Default options:
 
 ```lua
 require("minecraft").setup({
-  variant = "overworld",   -- "overworld" | "nether" | "end"
-  dark_variant = "nether", -- used by `:set background=dark` from the Overworld
+  variant = "plains",      -- "plains" | "cherry" | "snowy" | "nether" | "end" | "deep_dark"
+  light_variant = "plains", -- first `:set background=light` of the session
+  dark_variant = "nether", -- first `:set background=dark` of the session
   transparent = false,     -- don't set a background color (panels and floats included)
   dim_inactive = false,    -- dim the background of unfocused windows
   styles = {
@@ -181,18 +190,37 @@ vim.api.nvim_set_hl(0, "MyGroup", { fg = c.orange, bg = c.bg_alt })
 
 ## 🎨 Palettes
 
-| Role | Overworld | Nether | End |
+Light variants:
+
+| Role | Plains | Cherry | Snowy |
 |---|---|---|---|
-| Background | `#f6f2e7` sand | `#1b1819` blackstone | `#1f1d2b` void |
-| Foreground | `#4d4739` dark oak | `#f4eee8` quartz | `#ece9c9` end stone |
-| Red | `#c8404c` redstone | `#f28b82` netherrack | `#f38ba8` |
-| Orange | `#b8581a` copper | `#fca66b` lava | `#f9b387` |
-| Yellow | `#966b00` gold | `#f9d97a` glowstone | `#f2e88a` end stone bricks |
-| Green | `#3d8423` grass | `#7dd8c0` warped fungus | `#a6e39a` chorus plant |
-| Cyan | `#0f7f80` diamond | `#7fdbea` soul fire | `#7ee8f0` end gateway |
-| Blue | `#3a65c8` lapis | `#8fb0f7` | `#9aa5ff` |
-| Purple | `#8344d0` amethyst | `#b98cf5` crying obsidian | `#cfa0f5` purpur |
-| Accent | `#12854c` emerald | `#f38fb5` crimson fungus | `#7ee0c8` ender pearl |
+| Background | `#f6f2e7` birch | `#fbf6f7` petal | `#f5f8fb` snow |
+| Selection | `#d9e6c6` pale grass | `#f6d5e0` cherry blossom | `#d2e2f2` packed ice |
+| Foreground | `#4d4739` dark oak | `#4a3940` cherry log | `#2f3b48` cold stone |
+| Red | `#c8404c` redstone | `#c03a55` | `#c03c48` sweet berries |
+| Orange | `#b8581a` copper | `#b85a2a` | `#b0561c` fox |
+| Yellow | `#966b00` gold | `#8f6a00` | `#8a6800` |
+| Green | `#3d8423` grass | `#3f8030` grass | `#2e7a48` spruce |
+| Cyan | `#0f7f80` diamond | `#18777f` | `#0e7484` powder snow |
+| Blue | `#3a65c8` lapis | `#4060c0` | `#2f5fbf` blue ice |
+| Purple | `#8344d0` amethyst | `#8a48c0` lavender | `#7048c0` |
+| Accent | `#12854c` emerald | `#c0407f` cherry leaves | `#137a6a` |
+
+Dark variants:
+
+| Role | Nether | End | Deep Dark |
+|---|---|---|---|
+| Background | `#1b1819` blackstone | `#1f1d2b` void | `#0f1519` sculk |
+| Selection | `#47302f` netherrack | `#3c3754` | `#1f3a40` sculk veins |
+| Foreground | `#f4eee8` quartz | `#ece9c9` end stone | `#d6e2e4` |
+| Red | `#f28b82` netherrack | `#f38ba8` | `#f08a8a` |
+| Orange | `#fca66b` lava | `#f9b387` | `#f5b07a` |
+| Yellow | `#f9d97a` glowstone | `#f2e88a` end stone bricks | `#ecd88a` |
+| Green | `#7dd8c0` warped fungus | `#a6e39a` eye of ender | `#8fd8a0` |
+| Cyan | `#7fdbea` soul fire | `#7ee8f0` end gateway | `#4fe0e6` sculk glow |
+| Blue | `#8fb0f7` | `#9aa5ff` | `#7fa8f0` |
+| Purple | `#b98cf5` crying obsidian | `#cfa0f5` purpur | `#b49cf0` |
+| Accent | `#f38fb5` crimson fungus | `#7ee0c8` ender pearl | `#2ecfc0` sculk catalyst |
 
 ## 🤝 Contributing
 

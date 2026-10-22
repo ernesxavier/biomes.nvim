@@ -17,7 +17,7 @@ return {
   red        = "#f38ba8",
   orange     = "#f9b387",
   yellow     = "#f2e88a", -- ladrillo de piedra del End
-  green      = "#a6e39a", -- planta coralina
+  green      = "#a6e39a", -- ojo de ender
   cyan       = "#7ee8f0", -- portal de acceso
   blue       = "#9aa5ff",
   purple     = "#cfa0f5", -- purpur

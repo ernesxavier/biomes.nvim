@@ -4,7 +4,7 @@ local M = {}
 function M.theme(variant)
   local minecraft = require("minecraft")
   variant = variant
-    or (vim.g.colors_name or ""):match("^minecraft%-(%a+)$")
+    or (vim.g.colors_name or ""):match("^minecraft%-([%w_]+)$")
     or minecraft.config.variant
   local c = minecraft.palette(variant)
   local bg = minecraft.config.transparent and "NONE" or c.bg_alt
