@@ -12,7 +12,30 @@ biomes and three dark places.
 | 🌌 **End** | 🌙 dark | the void, end stone, purpur, chorus plants and ender pearls |
 | 🌑 **Deep Dark** | 🌙 dark | deepslate, glowing sculk and the Ancient City |
 
-<!-- TODO: add screenshots of each variant -->
+![The six minecraft.nvim variants](assets/screenshots/overview.png)
+
+<details>
+<summary>Each variant in full size</summary>
+
+### 🌾 Plains
+![Plains](assets/screenshots/plains.png)
+
+### 🌸 Cherry Grove
+![Cherry Grove](assets/screenshots/cherry.png)
+
+### ❄️ Snowy
+![Snowy](assets/screenshots/snowy.png)
+
+### 🔥 Nether
+![Nether](assets/screenshots/nether.png)
+
+### 🌌 The End
+![The End](assets/screenshots/end.png)
+
+### 🌑 Deep Dark
+![Deep Dark](assets/screenshots/deep_dark.png)
+
+</details>
 
 ## ✨ Features
 
@@ -266,6 +289,18 @@ Each variant has a `tune` table to shift every code color at once: `lightness` i
 added to L and `chroma` multiplies C. The report lists contrast against the
 background and the closest pair of colors, and warns below 4.5:1 or when two colors
 get too close to tell apart.
+
+### Screenshots
+
+The images in `assets/screenshots/` are drawn from Neovim's real highlighting: a
+headless Neovim opens the files in `scripts/screenshots/samples/`, records the
+color Treesitter gives every character with each variant, and a Python script
+draws the windows (needs [Pillow](https://pypi.org/project/pillow/) and JetBrains
+Mono Nerd Font). After changing colors:
+
+```sh
+python3 scripts/screenshots/render.py
+```
 
 ## 📄 License
 
