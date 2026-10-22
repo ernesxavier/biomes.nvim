@@ -170,7 +170,7 @@ function M.get(c, o)
     ["@markup.strikethrough"] = { strikethrough = true },
     ["@markup.underline"]   = { underline = true },
     ["@markup.quote"]       = { fg = c.fg_dim, italic = true },
-    ["@markup.math"]        = { fg = c.cyan },
+    ["@markup.math"]        = { fg = c.math, bg = c.math_bg },
     ["@markup.link"]        = { fg = c.blue },
     ["@markup.link.url"]    = { fg = c.blue, underline = true },
     ["@markup.link.label"]  = { fg = c.purple },

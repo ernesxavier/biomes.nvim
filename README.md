@@ -193,6 +193,8 @@ vim.api.nvim_set_hl(0, "MyGroup", { fg = c.orange, bg = c.bg_alt })
 
 Operators, numbers and punctuation get their own colors, picked to stay apart from
 every other color of the variant, so math-heavy code such as Julia reads clearly.
+Equations in Markdown and LaTeX (vimtex) sit on a soft band of a block from each
+world (raw iron, netherrack, obsidian, deepslate) whose hue is far from the cyan text.
 
 Each variant has an identity color (`accent`) used for the normal mode in the
 statusline, the active tab, the selected menu item and picker titles. When the
@@ -216,6 +218,7 @@ Light variants:
 | Operator | `#9d448f` | `#02597f` | `#9b4592` |
 | Number | `#005a7d` | `#03614b` | `#4c5a01` |
 | Punctuation | `#5f6852` | `#665e67` | `#52545f` |
+| Math | `#055c5c` on `#eddece` raw iron | `#055b61` on `#f0e1d9` raw iron | `#035b67` on `#ece2dc` raw iron |
 | Special | `#005544` emerald | `#9d4490` cherry leaves | `#01624a` |
 | Identity | `#2e760d` grass | `#9d4490` cherry blossom | `#2955ad` blue ice |
 
@@ -236,6 +239,7 @@ Dark variants:
 | Operator | `#99c8ff` | `#94a860` | `#cea7db` |
 | Number | `#29aed4` | `#63a6d7` | `#ffc1a9` |
 | Punctuation | `#deb9c3` | `#a9a2b9` | `#86a5ac` |
+| Math | `#44d0c1` on `#3e221f` netherrack | `#6ad3e5` on `#2a203b` obsidian | `#0acdd4` on `#262634` deepslate |
 | Special | `#ed8da6` crimson fungus | `#4db9ae` ender pearl | `#6fa77f` sculk catalyst |
 | Identity | `#ed9b66` lava | `#be8be7` purpur | `#0acdd4` sculk glow |
 

@@ -276,6 +276,8 @@ same way for all of them.
   operator      operators; bold for keyword operators (`in`, `isa`, `and`)
   number        numbers
   punct         brackets, commas and delimiters
+  math          equations in Markdown (`$...$`) and LaTeX (vimtex)
+  math_bg       band behind equations, in a hue far from `math`
   accent        identity color: normal mode, active tab, selected menu
                 item, picker titles. Other modes switch to green when
                 they share its color

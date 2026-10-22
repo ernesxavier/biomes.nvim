@@ -27,6 +27,8 @@ return {
   operator   = "#cea7db", -- operadores: el tono más libre de la paleta
   number     = "#ffc1a9",
   punct      = "#86a5ac", -- puntuación: neutro con el tinte del mundo
+  math       = "#0acdd4", -- ecuaciones: el mismo cian
+  math_bg    = "#262634", -- franja de las ecuaciones: deepslate
 
   accent     = "#0acdd4", -- identidad: brillo del sculk
 

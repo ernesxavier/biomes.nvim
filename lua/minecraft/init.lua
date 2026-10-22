@@ -26,6 +26,8 @@
 ---@field operator string Operadores (+, *, ->, ::...)
 ---@field number string Números
 ---@field punct string Paréntesis, comas y demás puntuación
+---@field math string Texto de las ecuaciones (Markdown, LaTeX)
+---@field math_bg string Franja detrás de las ecuaciones
 ---@field accent string Color de identidad: modo normal, pestaña activa, títulos...
 ---@field search string
 ---@field on_search string

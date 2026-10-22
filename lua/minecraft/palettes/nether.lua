@@ -27,6 +27,8 @@ return {
   operator   = "#99c8ff", -- operadores: el tono más libre de la paleta
   number     = "#29aed4",
   punct      = "#deb9c3", -- puntuación: neutro con el tinte del mundo
+  math       = "#44d0c1", -- ecuaciones: el mismo cian
+  math_bg    = "#3e221f", -- franja de las ecuaciones: netherrack
 
   accent     = "#ed9b66", -- identidad: lava
 
