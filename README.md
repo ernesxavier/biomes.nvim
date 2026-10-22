@@ -117,6 +117,8 @@ vim.cmd.colorscheme("minecraft-end")
 :colorscheme minecraft-end
 ```
 
+Full documentation is available inside Neovim with `:help minecraft`.
+
 The theme follows `'background'`: `:set background=light` switches to the Overworld,
 and `:set background=dark` goes back to the last dark dimension you used
 (or `dark_variant` the first time).
