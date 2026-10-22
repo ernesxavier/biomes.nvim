@@ -14,6 +14,29 @@ function M.blend(fg, bg, alpha)
   return string.format("#%02x%02x%02x", ch(r1, r2), ch(g1, g2), ch(b1, b2))
 end
 
+-- Colores de los modos (lualine, mini.statusline). Normal usa el acento de la
+-- variante; si otro modo usaba ese mismo color, pasa al verde para que no se
+-- confundan
+---@param c minecraft.Palette
+---@return table<"normal"|"insert"|"visual"|"replace"|"command"|"terminal", string>
+function M.mode_colors(c)
+  local modes = {
+    normal = c.green,
+    insert = c.cyan,
+    visual = c.purple,
+    replace = c.red,
+    command = c.orange,
+    terminal = c.emerald,
+  }
+  for mode, color in pairs(modes) do
+    if mode ~= "normal" and color == c.accent then
+      modes[mode] = c.green
+    end
+  end
+  modes.normal = c.accent
+  return modes
+end
+
 -- Tipos de símbolo LSP; los colores viven en los grupos LspKind<Tipo>
 -- stylua: ignore
 M.kind_names = {

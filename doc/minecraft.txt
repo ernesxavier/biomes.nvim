@@ -272,6 +272,9 @@ same way for all of them.
   purple        keywords
   brown         parameters
   emerald       special characters, escapes, hints
+  accent        identity color: normal mode, active tab, selected menu
+                item, picker titles. Other modes switch to green when
+                they share its color
   search        background of |hl-Search|
   on_search     text on top of `search`
 

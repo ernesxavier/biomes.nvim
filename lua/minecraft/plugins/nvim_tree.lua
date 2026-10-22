@@ -8,7 +8,7 @@ return function(c, _, u)
     NvimTreeNormal         = { fg = c.fg, bg = bg },
     NvimTreeNormalNC       = { fg = c.fg, bg = bg },
     NvimTreeWinSeparator   = separator,
-    NvimTreeRootFolder     = { fg = c.green, bold = true },
+    NvimTreeRootFolder     = { fg = c.accent, bold = true },
     NvimTreeFolderName     = { fg = c.blue },
     NvimTreeFolderIcon     = { fg = c.blue },
     NvimTreeOpenedFolderName = { fg = c.blue, bold = true },

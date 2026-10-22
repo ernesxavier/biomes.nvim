@@ -24,6 +24,8 @@ return {
   brown      = "#85603e", -- tronco de abeto
   emerald    = "#137a6a",
 
+  accent     = "#2f5fbf", -- identidad: hielo azul
+
   search     = "#fbe3a8", -- dorado: contrasta con el fondo frío
   on_search  = "#2f3b48",
 }

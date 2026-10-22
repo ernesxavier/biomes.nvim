@@ -23,6 +23,7 @@
 ---@field purple string
 ---@field brown string
 ---@field emerald string
+---@field accent string Color de identidad: modo normal, pestaña activa, títulos...
 ---@field search string
 ---@field on_search string
 

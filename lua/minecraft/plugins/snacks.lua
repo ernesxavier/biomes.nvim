@@ -4,7 +4,7 @@ return function(c, _, u)
   local float_bg = u.float_bg
   return {
     -- dashboard
-    SnacksDashboardHeader  = { fg = c.green },
+    SnacksDashboardHeader  = { fg = c.accent },
     SnacksDashboardIcon    = { fg = c.cyan },
     SnacksDashboardKey     = { fg = c.orange, bold = true },
     SnacksDashboardDesc    = { fg = c.fg },
@@ -16,7 +16,7 @@ return function(c, _, u)
     -- picker / explorer
     SnacksPicker           = { fg = c.fg, bg = float_bg },
     SnacksPickerBorder     = { fg = c.border, bg = float_bg },
-    SnacksPickerTitle      = { fg = c.bg, bg = c.green, bold = true },
+    SnacksPickerTitle      = { fg = c.bg, bg = c.accent, bold = true },
     SnacksPickerPrompt     = { fg = c.orange },
     SnacksPickerMatch      = { fg = c.cyan, bold = true },
     SnacksPickerDir        = { fg = c.comment },

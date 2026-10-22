@@ -8,7 +8,7 @@ return function(c, _, u)
     NeoTreeNormal        = { fg = c.fg, bg = bg },
     NeoTreeNormalNC      = { fg = c.fg, bg = bg },
     NeoTreeWinSeparator  = separator,
-    NeoTreeRootName      = { fg = c.green, bold = true },
+    NeoTreeRootName      = { fg = c.accent, bold = true },
     NeoTreeDirectoryName = { fg = c.blue },
     NeoTreeDirectoryIcon = { fg = c.blue },
     NeoTreeFileName      = { fg = c.fg },

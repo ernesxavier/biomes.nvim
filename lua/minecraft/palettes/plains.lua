@@ -24,6 +24,8 @@ return {
   brown      = "#965c30", -- tierra
   emerald    = "#12854c", -- esmeralda
 
+  accent     = "#3d8423", -- identidad: pasto
+
   search     = "#f2df98",
   on_search  = "#4d4739",
 }

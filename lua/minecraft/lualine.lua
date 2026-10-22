@@ -17,13 +17,14 @@ function M.theme(variant)
     }
   end
 
+  local m = require("minecraft.util").mode_colors(c)
   return {
-    normal   = mode(c.green),
-    insert   = mode(c.cyan),
-    visual   = mode(c.purple),
-    replace  = mode(c.red),
-    command  = mode(c.orange),
-    terminal = mode(c.emerald),
+    normal   = mode(m.normal),
+    insert   = mode(m.insert),
+    visual   = mode(m.visual),
+    replace  = mode(m.replace),
+    command  = mode(m.command),
+    terminal = mode(m.terminal),
     inactive = {
       a = { fg = c.comment, bg = bg },
       b = { fg = c.comment, bg = bg },

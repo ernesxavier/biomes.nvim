@@ -190,6 +190,11 @@ vim.api.nvim_set_hl(0, "MyGroup", { fg = c.orange, bg = c.bg_alt })
 
 ## 🎨 Palettes
 
+Each variant has an identity color (`accent`) used for the normal mode in the
+statusline, the active tab, the selected menu item and picker titles. When the
+accent matches another mode's color, that mode switches to green so modes never
+look alike.
+
 Light variants:
 
 | Role | Plains | Cherry | Snowy |
@@ -204,7 +209,8 @@ Light variants:
 | Cyan | `#0f7f80` diamond | `#18777f` | `#0e7484` powder snow |
 | Blue | `#3a65c8` lapis | `#4060c0` | `#2f5fbf` blue ice |
 | Purple | `#8344d0` amethyst | `#8a48c0` lavender | `#7048c0` |
-| Accent | `#12854c` emerald | `#c0407f` cherry leaves | `#137a6a` |
+| Special | `#12854c` emerald | `#c0407f` cherry leaves | `#137a6a` |
+| Identity | `#3d8423` grass | `#c0407f` cherry blossom | `#2f5fbf` blue ice |
 
 Dark variants:
 
@@ -220,7 +226,8 @@ Dark variants:
 | Cyan | `#7fdbea` soul fire | `#7ee8f0` end gateway | `#4fe0e6` sculk glow |
 | Blue | `#8fb0f7` | `#9aa5ff` | `#7fa8f0` |
 | Purple | `#b98cf5` crying obsidian | `#cfa0f5` purpur | `#b49cf0` |
-| Accent | `#f38fb5` crimson fungus | `#7ee0c8` ender pearl | `#2ecfc0` sculk catalyst |
+| Special | `#f38fb5` crimson fungus | `#7ee0c8` ender pearl | `#2ecfc0` sculk catalyst |
+| Identity | `#fca66b` lava | `#cfa0f5` purpur | `#4fe0e6` sculk glow |
 
 ## 🤝 Contributing
 

@@ -24,6 +24,8 @@ return {
   brown      = "#c8b08a",
   emerald    = "#2ecfc0", -- catalizador de sculk
 
+  accent     = "#4fe0e6", -- identidad: brillo del sculk
+
   search     = "#4fe0e6",
   on_search  = "#0f1519",
 }

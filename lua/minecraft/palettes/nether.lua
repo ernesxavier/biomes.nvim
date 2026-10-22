@@ -24,6 +24,8 @@ return {
   brown      = "#d9a988", -- arena de almas
   emerald    = "#f38fb5", -- hongo carmesí (crimson)
 
+  accent     = "#fca66b", -- identidad: lava
+
   search     = "#f9d97a",
   on_search  = "#1b1819",
 }

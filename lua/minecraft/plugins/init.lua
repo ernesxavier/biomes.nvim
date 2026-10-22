@@ -3,6 +3,7 @@
 ---@field float_bg string Fondo de ventanas flotantes (según styles.floats)
 ---@field sidebar_bg string Fondo de paneles laterales (según styles.sidebars)
 ---@field link_kinds fun(groups: table, pattern: string): table Enlaza `pattern` (p. ej. "CmpItemKind%s") a LspKind<Tipo>
+---@field mode_colors fun(c: minecraft.Palette): table<string, string> Colores de los modos (normal usa el acento)
 
 ---@alias minecraft.PluginGroups fun(c: minecraft.Palette, o: minecraft.Config, u: minecraft.PluginContext): table<string, vim.api.keyset.highlight>
 

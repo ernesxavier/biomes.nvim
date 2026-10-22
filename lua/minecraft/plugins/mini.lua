@@ -3,6 +3,7 @@
 return function(c, o, u)
   local float_bg = u.float_bg
   local panel_bg = o.transparent and "NONE" or c.bg_alt
+  local m = u.mode_colors(c)
   return {
     -- mini.icons
     MiniIconsAzure  = { fg = c.cyan },
@@ -16,12 +17,12 @@ return function(c, o, u)
     MiniIconsYellow = { fg = c.yellow },
 
     -- mini.statusline
-    MiniStatuslineModeNormal  = { fg = c.bg, bg = c.green, bold = true },
-    MiniStatuslineModeInsert  = { fg = c.bg, bg = c.cyan, bold = true },
-    MiniStatuslineModeVisual  = { fg = c.bg, bg = c.purple, bold = true },
-    MiniStatuslineModeReplace = { fg = c.bg, bg = c.red, bold = true },
-    MiniStatuslineModeCommand = { fg = c.bg, bg = c.orange, bold = true },
-    MiniStatuslineModeOther   = { fg = c.bg, bg = c.emerald, bold = true },
+    MiniStatuslineModeNormal  = { fg = c.bg, bg = m.normal, bold = true },
+    MiniStatuslineModeInsert  = { fg = c.bg, bg = m.insert, bold = true },
+    MiniStatuslineModeVisual  = { fg = c.bg, bg = m.visual, bold = true },
+    MiniStatuslineModeReplace = { fg = c.bg, bg = m.replace, bold = true },
+    MiniStatuslineModeCommand = { fg = c.bg, bg = m.command, bold = true },
+    MiniStatuslineModeOther   = { fg = c.bg, bg = m.terminal, bold = true },
     MiniStatuslineDevinfo     = { fg = c.fg_dim, bg = c.bg_float },
     MiniStatuslineFilename    = { fg = c.fg_dim, bg = panel_bg },
     MiniStatuslineFileinfo    = { fg = c.fg_dim, bg = c.bg_float },
@@ -35,14 +36,14 @@ return function(c, o, u)
     MiniTablineModifiedVisible = { fg = c.orange, bg = panel_bg },
     MiniTablineModifiedHidden  = { fg = u.soft(c.orange, 0.7), bg = panel_bg },
     MiniTablineFill            = { bg = panel_bg },
-    MiniTablineTabpagesection  = { fg = c.bg, bg = c.green, bold = true },
+    MiniTablineTabpagesection  = { fg = c.bg, bg = c.accent, bold = true },
 
     -- mini.files
     MiniFilesNormal         = { fg = c.fg, bg = float_bg },
     MiniFilesBorder         = { fg = c.border, bg = float_bg },
     MiniFilesBorderModified = { fg = c.orange, bg = float_bg },
     MiniFilesTitle          = { fg = c.comment, bg = float_bg },
-    MiniFilesTitleFocused   = { fg = c.green, bg = float_bg, bold = true },
+    MiniFilesTitleFocused   = { fg = c.accent, bg = float_bg, bold = true },
     MiniFilesDirectory      = { fg = c.blue },
     MiniFilesFile           = { fg = c.fg },
     MiniFilesCursorLine     = { bg = c.selection },
@@ -51,8 +52,8 @@ return function(c, o, u)
     MiniPickNormal        = { fg = c.fg, bg = float_bg },
     MiniPickBorder        = { fg = c.border, bg = float_bg },
     MiniPickBorderBusy    = { fg = c.orange, bg = float_bg },
-    MiniPickBorderText    = { fg = c.green, bg = float_bg, bold = true },
-    MiniPickPrompt        = { fg = c.green, bg = float_bg },
+    MiniPickBorderText    = { fg = c.accent, bg = float_bg, bold = true },
+    MiniPickPrompt        = { fg = c.accent, bg = float_bg },
     MiniPickHeader        = { fg = c.purple, bold = true },
     MiniPickIconDirectory = { link = "Directory" },
     MiniPickIconFile      = { fg = c.fg_dim },
@@ -77,7 +78,7 @@ return function(c, o, u)
     MiniNotifyTitle  = { fg = c.yellow, bg = float_bg, bold = true },
 
     -- mini.starter
-    MiniStarterHeader     = { fg = c.green },
+    MiniStarterHeader     = { fg = c.accent },
     MiniStarterFooter     = { fg = c.comment, italic = true },
     MiniStarterSection    = { fg = c.purple, bold = true },
     MiniStarterItem       = { fg = c.fg },

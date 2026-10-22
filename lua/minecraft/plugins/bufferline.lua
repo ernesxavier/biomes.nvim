@@ -2,6 +2,6 @@
 ---@type minecraft.PluginGroups
 return function(c)
   return {
-    BufferLineIndicatorSelected = { fg = c.green },
+    BufferLineIndicatorSelected = { fg = c.accent },
   }
 end

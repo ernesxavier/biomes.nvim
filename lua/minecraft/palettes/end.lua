@@ -24,6 +24,8 @@ return {
   brown      = "#d4c48e",
   emerald    = "#7ee0c8", -- perla de ender
 
+  accent     = "#cfa0f5", -- identidad: purpur
+
   search     = "#cfa0f5",
   on_search  = "#1f1d2b",
 }

@@ -5,7 +5,7 @@ return function(c, _, u)
   return {
     FzfLuaNormal         = { fg = c.fg, bg = float_bg },
     FzfLuaBorder         = { fg = c.border, bg = float_bg },
-    FzfLuaTitle          = { fg = c.bg, bg = c.green, bold = true },
+    FzfLuaTitle          = { fg = c.bg, bg = c.accent, bold = true },
     FzfLuaPreviewTitle   = { fg = c.bg, bg = c.purple, bold = true },
     FzfLuaCursor         = { link = "Cursor" },
     FzfLuaCursorLine     = { bg = c.selection },
@@ -19,7 +19,7 @@ return function(c, _, u)
     FzfLuaFzfMatch       = { fg = c.cyan, bold = true },
     FzfLuaFzfPointer     = { fg = c.orange },
     FzfLuaFzfMarker      = { fg = c.orange },
-    FzfLuaFzfPrompt      = { fg = c.green },
+    FzfLuaFzfPrompt      = { fg = c.accent },
     FzfLuaFzfSeparator   = { fg = c.border },
     FzfLuaFzfBorder      = { fg = c.border },
   }

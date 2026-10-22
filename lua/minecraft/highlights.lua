@@ -68,7 +68,7 @@ function M.get(c, o)
     Conceal      = { fg = c.comment },
     QuickFixLine = { bg = c.selection, bold = true },
     Pmenu        = { fg = c.fg, bg = c.bg_float },
-    PmenuSel     = { fg = c.bg, bg = c.green, bold = true },
+    PmenuSel     = { fg = c.bg, bg = c.accent, bold = true },
     PmenuSbar    = { bg = c.bg_alt },
     PmenuThumb   = { bg = c.border },
     PmenuMatch   = { fg = c.cyan, bold = true },
@@ -77,7 +77,7 @@ function M.get(c, o)
     WinBar       = { fg = c.fg_dim, bg = bg },
     WinBarNC     = { fg = c.comment, bg = bg },
     TabLine      = { fg = c.fg_dim, bg = c.bg_alt },
-    TabLineSel   = { fg = c.bg, bg = c.green, bold = true },
+    TabLineSel   = { fg = c.bg, bg = c.accent, bold = true },
     TabLineFill  = { bg = c.bg_alt },
     Title        = { fg = c.yellow, bold = true },
     Directory    = { fg = c.blue },
@@ -86,7 +86,7 @@ function M.get(c, o)
     ModeMsg      = { fg = c.fg, bold = true },
     MoreMsg      = { fg = c.green },
     Question     = { fg = c.cyan },
-    WildMenu     = { fg = c.bg, bg = c.green },
+    WildMenu     = { fg = c.bg, bg = c.accent },
     SpellBad     = { sp = c.red, undercurl = true },
     SpellCap     = { sp = c.yellow, undercurl = true },
     SpellLocal   = { sp = c.blue, undercurl = true },
@@ -301,6 +301,7 @@ function M.get(c, o)
     float_bg = float_bg,
     sidebar_bg = sidebar_bg,
     link_kinds = require("minecraft.util").link_kinds,
+    mode_colors = require("minecraft.util").mode_colors,
   }
   for group, spec in pairs(require("minecraft.plugins").get(c, o, ctx)) do
     groups[group] = spec

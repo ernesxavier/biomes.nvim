@@ -24,6 +24,8 @@ return {
   brown      = "#8a4f5a", -- madera de cerezo
   emerald    = "#c0407f", -- hojas de cerezo
 
+  accent     = "#c0407f", -- identidad: flor de cerezo
+
   search     = "#f9cfe0",
   on_search  = "#4a3940",
 }
