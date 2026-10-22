@@ -150,6 +150,7 @@ require("minecraft").setup({
     variables = {},
     types = {},
     strings = {},
+    operators = {},        -- also `in`, `isa`, `and`... (shown bold)
     -- Panel backgrounds: "shaded" | "normal" | "transparent"
     sidebars = "shaded",   -- neo-tree, nvim-tree, trouble
     floats = "shaded",     -- floating windows, pickers, which-key, completion docs
@@ -190,6 +191,9 @@ vim.api.nvim_set_hl(0, "MyGroup", { fg = c.orange, bg = c.bg_alt })
 
 ## 🎨 Palettes
 
+Operators, numbers and punctuation get their own colors, picked to stay apart from
+every other color of the variant, so math-heavy code such as Julia reads clearly.
+
 Each variant has an identity color (`accent`) used for the normal mode in the
 statusline, the active tab, the selected menu item and picker titles. When the
 accent matches another mode's color, that mode switches to green so modes never
@@ -209,8 +213,11 @@ Light variants:
 | Cyan | `#076f6f` diamond | `#076e75` | `#066d7c` powder snow |
 | Blue | `#2e54ae` lapis | `#3552ae` | `#2955ad` blue ice |
 | Purple | `#643b9a` amethyst | `#6b3895` lavender | `#5d3e9e` |
-| Special | `#027742` emerald | `#a0356a` cherry leaves | `#067464` |
-| Identity | `#2e760d` grass | `#a0356a` cherry blossom | `#2955ad` blue ice |
+| Operator | `#9d448f` | `#02597f` | `#9b4592` |
+| Number | `#005a7d` | `#03614b` | `#4c5a01` |
+| Punctuation | `#5f6852` | `#665e67` | `#52545f` |
+| Special | `#005544` emerald | `#9d4490` cherry leaves | `#01624a` |
+| Identity | `#2e760d` grass | `#9d4490` cherry blossom | `#2955ad` blue ice |
 
 Dark variants:
 
@@ -226,7 +233,10 @@ Dark variants:
 | Cyan | `#44d0c1` soul fire | `#6ad3e5` end gateway | `#0acdd4` sculk glow |
 | Blue | `#9b96e9` | `#9aa0ff` | `#68a1eb` |
 | Purple | `#ba83cc` crying obsidian | `#be8be7` purpur | `#948be1` |
-| Special | `#ed8da6` crimson fungus | `#62ccc1` ender pearl | `#66bcb4` sculk catalyst |
+| Operator | `#99c8ff` | `#94a860` | `#cea7db` |
+| Number | `#29aed4` | `#63a6d7` | `#ffc1a9` |
+| Punctuation | `#deb9c3` | `#a9a2b9` | `#86a5ac` |
+| Special | `#ed8da6` crimson fungus | `#4db9ae` ender pearl | `#6fa77f` sculk catalyst |
 | Identity | `#ed9b66` lava | `#be8be7` purpur | `#0acdd4` sculk glow |
 
 ## 🤝 Contributing

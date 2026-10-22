@@ -22,9 +22,13 @@ return {
   blue       = "#3552ae",
   purple     = "#6b3895", -- lavanda
   brown      = "#82414e", -- madera de cerezo
-  emerald    = "#a0356a", -- hojas de cerezo
+  emerald    = "#9d4490", -- hojas de cerezo
 
-  accent     = "#a0356a", -- identidad: flor de cerezo
+  operator   = "#02597f", -- operadores: el tono más libre de la paleta
+  number     = "#03614b",
+  punct      = "#665e67", -- puntuación: neutro con el tinte del mundo
+
+  accent     = "#9d4490", -- identidad: flor de cerezo
 
   search     = "#f9cfe0",
   on_search  = "#4a3940",

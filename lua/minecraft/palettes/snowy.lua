@@ -22,7 +22,11 @@ return {
   blue       = "#2955ad", -- hielo azul
   purple     = "#5d3e9e",
   brown      = "#7b4b1a", -- tronco de abeto
-  emerald    = "#067464",
+  emerald    = "#01624a",
+
+  operator   = "#9b4592", -- operadores: el tono más libre de la paleta
+  number     = "#4c5a01",
+  punct      = "#52545f", -- puntuación: neutro con el tinte del mundo
 
   accent     = "#2955ad", -- identidad: hielo azul
 

@@ -21,8 +21,12 @@ return {
   cyan       = "#0acdd4", -- brillo del sculk
   blue       = "#68a1eb",
   purple     = "#948be1",
-  brown      = "#b3a783",
-  emerald    = "#66bcb4", -- catalizador de sculk
+  brown      = "#a38b62",
+  emerald    = "#6fa77f", -- catalizador de sculk
+
+  operator   = "#cea7db", -- operadores: el tono más libre de la paleta
+  number     = "#ffc1a9",
+  punct      = "#86a5ac", -- puntuación: neutro con el tinte del mundo
 
   accent     = "#0acdd4", -- identidad: brillo del sculk
 

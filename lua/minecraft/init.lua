@@ -23,6 +23,9 @@
 ---@field purple string
 ---@field brown string
 ---@field emerald string
+---@field operator string Operadores (+, *, ->, ::...)
+---@field number string Números
+---@field punct string Paréntesis, comas y demás puntuación
 ---@field accent string Color de identidad: modo normal, pestaña activa, títulos...
 ---@field search string
 ---@field on_search string
@@ -34,6 +37,7 @@
 ---@field variables? vim.api.keyset.highlight
 ---@field types? vim.api.keyset.highlight
 ---@field strings? vim.api.keyset.highlight
+---@field operators? vim.api.keyset.highlight
 ---@field sidebars? minecraft.PanelStyle Fondo de neo-tree, nvim-tree, trouble...
 ---@field floats? minecraft.PanelStyle Fondo de ventanas flotantes, pickers, which-key...
 
@@ -77,6 +81,7 @@ M.config = {
     variables = {},
     types = {},
     strings = {},
+    operators = {},
     sidebars = "shaded",
     floats = "shaded",
   },

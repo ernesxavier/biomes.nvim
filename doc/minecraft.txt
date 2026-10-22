@@ -92,6 +92,7 @@ Call `setup()` before loading the colorscheme. Defaults: >lua
         variables = {},
         types = {},
         strings = {},
+        operators = {},
         sidebars = "shaded",
         floats = "shaded",
       },
@@ -133,9 +134,9 @@ dim_inactive ~
 4.1 STYLES                                                *minecraft-styles*
 
 Syntax styles ~
-    `comments`, `keywords`, `functions`, `variables`, `types` and `strings`
-    take any attribute accepted by |nvim_set_hl()|, merged into the
-    corresponding groups: >lua
+    `comments`, `keywords`, `functions`, `variables`, `types`, `strings` and
+    `operators` take any attribute accepted by |nvim_set_hl()|, merged into
+    the corresponding groups: >lua
     styles = {
       comments = { italic = false },
       keywords = { italic = true },
@@ -260,11 +261,11 @@ same way for all of them.
   selection     |hl-Visual|, selected menu items
   border        window borders and separators
   fg            default text
-  fg_dim        operators, punctuation, secondary text
+  fg_dim        secondary text in the interface
   comment       comments, inlay hints
   line_nr       line numbers, file tree indent markers
   red           errors, preprocessor, tags
-  orange        constants, numbers
+  orange        constants, booleans
   yellow        types, warnings
   green         strings, additions
   cyan          functions
@@ -272,6 +273,9 @@ same way for all of them.
   purple        keywords
   brown         parameters
   emerald       special characters, escapes, hints
+  operator      operators; bold for keyword operators (`in`, `isa`, `and`)
+  number        numbers
+  punct         brackets, commas and delimiters
   accent        identity color: normal mode, active tab, selected menu
                 item, picker titles. Other modes switch to green when
                 they share its color

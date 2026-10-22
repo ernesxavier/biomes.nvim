@@ -22,7 +22,11 @@ return {
   blue       = "#2e54ae", -- lapislázuli / agua
   purple     = "#643b9a", -- amatista
   brown      = "#7e4920", -- tierra
-  emerald    = "#027742", -- esmeralda
+  emerald    = "#005544", -- esmeralda (textura del bloque, azul verdoso)
+
+  operator   = "#9d448f", -- operadores: el tono más libre de la paleta
+  number     = "#005a7d",
+  punct      = "#5f6852", -- puntuación: neutro con el tinte del mundo
 
   accent     = "#2e760d", -- identidad: pasto
 

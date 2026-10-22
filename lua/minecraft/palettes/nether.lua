@@ -21,8 +21,12 @@ return {
   cyan       = "#44d0c1", -- fuego de almas
   blue       = "#9b96e9",
   purple     = "#ba83cc", -- obsidiana llorona
-  brown      = "#cf9f80", -- arena de almas
+  brown      = "#ac8e4f", -- arena de almas
   emerald    = "#ed8da6", -- hongo carmesí (crimson)
+
+  operator   = "#99c8ff", -- operadores: el tono más libre de la paleta
+  number     = "#29aed4",
+  punct      = "#deb9c3", -- puntuación: neutro con el tinte del mundo
 
   accent     = "#ed9b66", -- identidad: lava
 

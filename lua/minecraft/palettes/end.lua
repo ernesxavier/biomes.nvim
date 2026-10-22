@@ -22,7 +22,11 @@ return {
   blue       = "#9aa0ff",
   purple     = "#be8be7", -- purpur
   brown      = "#c8b189",
-  emerald    = "#62ccc1", -- perla de ender
+  emerald    = "#4db9ae", -- perla de ender
+
+  operator   = "#94a860", -- operadores: el tono más libre de la paleta
+  number     = "#63a6d7",
+  punct      = "#a9a2b9", -- puntuación: neutro con el tinte del mundo
 
   accent     = "#be8be7", -- identidad: purpur
 
