@@ -11,20 +11,20 @@ return {
 
   fg         = "#4a3940", -- tronco de cerezo
   fg_dim     = "#6e5860",
-  comment    = "#a08a92",
+  comment    = "#8e7880",
   line_nr    = "#d4bcc5",
 
-  red        = "#c03a55",
-  orange     = "#b85a2a",
-  yellow     = "#8f6a00",
-  green      = "#3f8030", -- pasto
-  cyan       = "#18777f",
-  blue       = "#4060c0",
-  purple     = "#8a48c0", -- lavanda
-  brown      = "#8a4f5a", -- madera de cerezo
-  emerald    = "#c0407f", -- hojas de cerezo
+  red        = "#a7344a",
+  orange     = "#b24b09",
+  yellow     = "#896502",
+  green      = "#297613", -- pasto
+  cyan       = "#076e75",
+  blue       = "#3552ae",
+  purple     = "#6b3895", -- lavanda
+  brown      = "#82414e", -- madera de cerezo
+  emerald    = "#a0356a", -- hojas de cerezo
 
-  accent     = "#c0407f", -- identidad: flor de cerezo
+  accent     = "#a0356a", -- identidad: flor de cerezo
 
   search     = "#f9cfe0",
   on_search  = "#4a3940",

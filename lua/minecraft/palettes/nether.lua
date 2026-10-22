@@ -9,23 +9,23 @@ return {
   selection  = "#47302f",
   border     = "#5c3a38",
 
-  fg         = "#f4eee8", -- cuarzo
-  fg_dim     = "#c9bdb6",
+  fg         = "#dfdad4", -- cuarzo
+  fg_dim     = "#b5b0ac",
   comment    = "#8f8384", -- suelo de almas
   line_nr    = "#56494a",
 
-  red        = "#f28b82", -- netherrack
-  orange     = "#fca66b", -- lava
-  yellow     = "#f9d97a", -- glowstone
-  green      = "#7dd8c0", -- hongo distorsionado (warped)
-  cyan       = "#7fdbea", -- fuego de almas
-  blue       = "#8fb0f7",
-  purple     = "#b98cf5", -- obsidiana llorona
-  brown      = "#d9a988", -- arena de almas
-  emerald    = "#f38fb5", -- hongo carmesí (crimson)
+  red        = "#df8073", -- netherrack
+  orange     = "#ed9b66", -- lava
+  yellow     = "#ecc166", -- glowstone
+  green      = "#6fcb93", -- hongo distorsionado (warped)
+  cyan       = "#44d0c1", -- fuego de almas
+  blue       = "#9b96e9",
+  purple     = "#ba83cc", -- obsidiana llorona
+  brown      = "#cf9f80", -- arena de almas
+  emerald    = "#ed8da6", -- hongo carmesí (crimson)
 
-  accent     = "#fca66b", -- identidad: lava
+  accent     = "#ed9b66", -- identidad: lava
 
-  search     = "#f9d97a",
+  search     = "#ecc166",
   on_search  = "#1b1819",
 }

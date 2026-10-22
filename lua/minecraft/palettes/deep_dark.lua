@@ -2,30 +2,30 @@
 return {
   background = "dark",
 
-  bg         = "#0f1519", -- sculk
-  bg_alt     = "#151d22",
-  bg_float   = "#1a242a",
-  cursorline = "#141c21",
-  selection  = "#1f3a40", -- venas de sculk
-  border     = "#2a4a52",
+  bg         = "#13161c", -- sculk sobre deepslate
+  bg_alt     = "#1b1e24",
+  bg_float   = "#20242b",
+  cursorline = "#191c21",
+  selection  = "#123f48", -- venas de sculk
+  border     = "#244f58",
 
-  fg         = "#d6e2e4",
-  fg_dim     = "#9fb2b6",
+  fg         = "#cbd7d9",
+  fg_dim     = "#a4adae",
   comment    = "#5f7a80",
-  line_nr    = "#34484e",
+  line_nr    = "#444b56",
 
-  red        = "#f08a8a",
-  orange     = "#f5b07a",
-  yellow     = "#ecd88a",
-  green      = "#8fd8a0",
-  cyan       = "#4fe0e6", -- brillo del sculk
-  blue       = "#7fa8f0",
-  purple     = "#b49cf0",
-  brown      = "#c8b08a",
-  emerald    = "#2ecfc0", -- catalizador de sculk
+  red        = "#c88596",
+  orange     = "#cfa671",
+  yellow     = "#cbc887",
+  green      = "#84c29b",
+  cyan       = "#0acdd4", -- brillo del sculk
+  blue       = "#68a1eb",
+  purple     = "#948be1",
+  brown      = "#b3a783",
+  emerald    = "#66bcb4", -- catalizador de sculk
 
-  accent     = "#4fe0e6", -- identidad: brillo del sculk
+  accent     = "#0acdd4", -- identidad: brillo del sculk
 
-  search     = "#4fe0e6",
-  on_search  = "#0f1519",
+  search     = "#0acdd4",
+  on_search  = "#13161c",
 }

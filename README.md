@@ -202,32 +202,32 @@ Light variants:
 | Background | `#f6f2e7` birch | `#fbf6f7` petal | `#f5f8fb` snow |
 | Selection | `#d9e6c6` pale grass | `#f6d5e0` cherry blossom | `#d2e2f2` packed ice |
 | Foreground | `#4d4739` dark oak | `#4a3940` cherry log | `#2f3b48` cold stone |
-| Red | `#c8404c` redstone | `#c03a55` | `#c03c48` sweet berries |
-| Orange | `#b8581a` copper | `#b85a2a` | `#b0561c` fox |
-| Yellow | `#966b00` gold | `#8f6a00` | `#8a6800` |
-| Green | `#3d8423` grass | `#3f8030` grass | `#2e7a48` spruce |
-| Cyan | `#0f7f80` diamond | `#18777f` | `#0e7484` powder snow |
-| Blue | `#3a65c8` lapis | `#4060c0` | `#2f5fbf` blue ice |
-| Purple | `#8344d0` amethyst | `#8a48c0` lavender | `#7048c0` |
-| Special | `#12854c` emerald | `#c0407f` cherry leaves | `#137a6a` |
-| Identity | `#3d8423` grass | `#c0407f` cherry blossom | `#2f5fbf` blue ice |
+| Red | `#a8353f` redstone | `#a7344a` | `#a8353f` sweet berries |
+| Orange | `#af4e02` copper | `#b24b09` | `#ae4f04` fox |
+| Yellow | `#8c6405` gold | `#896502` | `#876602` |
+| Green | `#2e760d` grass | `#297613` grass | `#00783a` spruce |
+| Cyan | `#076f6f` diamond | `#076e75` | `#066d7c` powder snow |
+| Blue | `#2e54ae` lapis | `#3552ae` | `#2955ad` blue ice |
+| Purple | `#643b9a` amethyst | `#6b3895` lavender | `#5d3e9e` |
+| Special | `#027742` emerald | `#a0356a` cherry leaves | `#067464` |
+| Identity | `#2e760d` grass | `#a0356a` cherry blossom | `#2955ad` blue ice |
 
 Dark variants:
 
 | Role | Nether | End | Deep Dark |
 |---|---|---|---|
-| Background | `#1b1819` blackstone | `#1f1d2b` void | `#0f1519` sculk |
-| Selection | `#47302f` netherrack | `#3c3754` | `#1f3a40` sculk veins |
-| Foreground | `#f4eee8` quartz | `#ece9c9` end stone | `#d6e2e4` |
-| Red | `#f28b82` netherrack | `#f38ba8` | `#f08a8a` |
-| Orange | `#fca66b` lava | `#f9b387` | `#f5b07a` |
-| Yellow | `#f9d97a` glowstone | `#f2e88a` end stone bricks | `#ecd88a` |
-| Green | `#7dd8c0` warped fungus | `#a6e39a` eye of ender | `#8fd8a0` |
-| Cyan | `#7fdbea` soul fire | `#7ee8f0` end gateway | `#4fe0e6` sculk glow |
-| Blue | `#8fb0f7` | `#9aa5ff` | `#7fa8f0` |
-| Purple | `#b98cf5` crying obsidian | `#cfa0f5` purpur | `#b49cf0` |
-| Special | `#f38fb5` crimson fungus | `#7ee0c8` ender pearl | `#2ecfc0` sculk catalyst |
-| Identity | `#fca66b` lava | `#cfa0f5` purpur | `#4fe0e6` sculk glow |
+| Background | `#1b1819` blackstone | `#15141a` obsidian | `#13161c` sculk & deepslate |
+| Selection | `#47302f` netherrack | `#3b314d` | `#123f48` sculk veins |
+| Foreground | `#dfdad4` quartz | `#e3e0c0` end stone | `#cbd7d9` |
+| Red | `#df8073` netherrack | `#db8da7` | `#c88596` |
+| Orange | `#ed9b66` lava | `#f1a685` | `#cfa671` |
+| Yellow | `#ecc166` glowstone | `#eacf83` end stone bricks | `#cbc887` |
+| Green | `#6fcb93` warped fungus | `#8ad1a0` eye of ender | `#84c29b` |
+| Cyan | `#44d0c1` soul fire | `#6ad3e5` end gateway | `#0acdd4` sculk glow |
+| Blue | `#9b96e9` | `#9aa0ff` | `#68a1eb` |
+| Purple | `#ba83cc` crying obsidian | `#be8be7` purpur | `#948be1` |
+| Special | `#ed8da6` crimson fungus | `#62ccc1` ender pearl | `#66bcb4` sculk catalyst |
+| Identity | `#ed9b66` lava | `#be8be7` purpur | `#0acdd4` sculk glow |
 
 ## 🤝 Contributing
 

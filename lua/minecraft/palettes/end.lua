@@ -2,30 +2,30 @@
 return {
   background = "dark",
 
-  bg         = "#1f1d2b", -- el vacío
-  bg_alt     = "#272434",
-  bg_float   = "#2d2a3c",
-  cursorline = "#25222f",
-  selection  = "#3c3754",
-  border     = "#4c4666",
+  bg         = "#15141a", -- obsidiana / caja de shulker negra
+  bg_alt     = "#1d1c23",
+  bg_float   = "#232129",
+  cursorline = "#1b1a20",
+  selection  = "#3b314d",
+  border     = "#4a405d",
 
-  fg         = "#ece9c9", -- piedra del End
-  fg_dim     = "#c2bfa0",
+  fg         = "#e3e0c0", -- piedra del End
+  fg_dim     = "#b8b69d",
   comment    = "#7c7598",
-  line_nr    = "#4c4762",
+  line_nr    = "#4a4753",
 
-  red        = "#f38ba8",
-  orange     = "#f9b387",
-  yellow     = "#f2e88a", -- ladrillo de piedra del End
-  green      = "#a6e39a", -- ojo de ender
-  cyan       = "#7ee8f0", -- portal de acceso
-  blue       = "#9aa5ff",
-  purple     = "#cfa0f5", -- purpur
-  brown      = "#d4c48e",
-  emerald    = "#7ee0c8", -- perla de ender
+  red        = "#db8da7",
+  orange     = "#f1a685",
+  yellow     = "#eacf83", -- ladrillo de piedra del End
+  green      = "#8ad1a0", -- ojo de ender
+  cyan       = "#6ad3e5", -- portal de acceso
+  blue       = "#9aa0ff",
+  purple     = "#be8be7", -- purpur
+  brown      = "#c8b189",
+  emerald    = "#62ccc1", -- perla de ender
 
-  accent     = "#cfa0f5", -- identidad: purpur
+  accent     = "#be8be7", -- identidad: purpur
 
-  search     = "#cfa0f5",
-  on_search  = "#1f1d2b",
+  search     = "#be8be7",
+  on_search  = "#15141a",
 }
