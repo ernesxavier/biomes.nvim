@@ -31,6 +31,13 @@
 ---@field variables? vim.api.keyset.highlight
 ---@field types? vim.api.keyset.highlight
 ---@field strings? vim.api.keyset.highlight
+---@field sidebars? minecraft.PanelStyle Fondo de neo-tree, nvim-tree, trouble...
+---@field floats? minecraft.PanelStyle Fondo de ventanas flotantes, pickers, which-key...
+
+---@alias minecraft.PanelStyle
+---| "shaded" # Fondo con contraste (bg_alt / bg_float)
+---| "normal" # Mismo fondo que el editor
+---| "transparent" # Sin fondo
 
 ---@class minecraft.PluginsConfig
 ---@field all? boolean Cargar los grupos de todos los plugins soportados
@@ -40,7 +47,8 @@
 ---@class minecraft.Config
 ---@field variant? minecraft.Variant Variante por defecto
 ---@field dark_variant? "nether"|"end" Variante al hacer `:set background=dark` desde el Overworld
----@field transparent? boolean No pintar el fondo
+---@field transparent? boolean No pintar el fondo (también vuelve transparentes paneles y flotantes)
+---@field dim_inactive? boolean Atenuar el fondo de las ventanas sin foco
 ---@field styles? minecraft.Styles Atributos extra (italic, bold...) por tipo de elemento
 ---@field plugins? minecraft.PluginsConfig Qué grupos de plugins cargar
 ---@field on_colors? fun(colors: minecraft.Palette, variant: minecraft.Variant)
@@ -56,6 +64,7 @@ M.config = {
   variant = "overworld",
   dark_variant = "nether",
   transparent = false,
+  dim_inactive = false,
   styles = {
     comments = { italic = true },
     keywords = {},
@@ -63,6 +72,8 @@ M.config = {
     variables = {},
     types = {},
     strings = {},
+    sidebars = "shaded",
+    floats = "shaded",
   },
   plugins = {
     all = false,

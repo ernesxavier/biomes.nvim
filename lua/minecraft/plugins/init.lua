@@ -1,6 +1,7 @@
 ---@class minecraft.PluginContext
 ---@field soft fun(color: string, alpha?: number): string Fondo suave a partir de un acento
----@field float_bg string Fondo de ventanas flotantes (respeta transparent)
+---@field float_bg string Fondo de ventanas flotantes (según styles.floats)
+---@field sidebar_bg string Fondo de paneles laterales (según styles.sidebars)
 ---@field link_kinds fun(groups: table, pattern: string): table Enlaza `pattern` (p. ej. "CmpItemKind%s") a LspKind<Tipo>
 
 ---@alias minecraft.PluginGroups fun(c: minecraft.Palette, o: minecraft.Config, u: minecraft.PluginContext): table<string, vim.api.keyset.highlight>

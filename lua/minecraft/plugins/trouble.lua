@@ -1,7 +1,7 @@
 -- https://github.com/folke/trouble.nvim
 ---@type minecraft.PluginGroups
-return function(c, o)
-  local bg = o.transparent and "NONE" or c.bg_alt
+return function(c, _, u)
+  local bg = u.sidebar_bg
   return {
     TroubleNormal   = { fg = c.fg, bg = bg },
     TroubleNormalNC = { fg = c.fg, bg = bg },

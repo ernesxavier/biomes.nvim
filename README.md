@@ -129,15 +129,19 @@ Default options:
 require("minecraft").setup({
   variant = "overworld",   -- "overworld" | "nether" | "end"
   dark_variant = "nether", -- used by `:set background=dark` from the Overworld
-  transparent = false,     -- don't set a background color
-  -- Extra attributes per element; any `:h nvim_set_hl` key works (italic, bold, underline...)
+  transparent = false,     -- don't set a background color (panels and floats included)
+  dim_inactive = false,    -- dim the background of unfocused windows
   styles = {
+    -- Extra attributes per element; any `:h nvim_set_hl` key works (italic, bold, underline...)
     comments = { italic = true },
     keywords = {},
     functions = {},
     variables = {},
     types = {},
     strings = {},
+    -- Panel backgrounds: "shaded" | "normal" | "transparent"
+    sidebars = "shaded",   -- neo-tree, nvim-tree, trouble
+    floats = "shaded",     -- floating windows, pickers, which-key, completion docs
   },
   -- Change palette colors. Receives a copy, so edit it in place
   on_colors = function(colors, variant) end,

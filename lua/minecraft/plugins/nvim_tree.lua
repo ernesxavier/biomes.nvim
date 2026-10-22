@@ -1,11 +1,13 @@
 -- https://github.com/nvim-tree/nvim-tree.lua
 ---@type minecraft.PluginGroups
-return function(c, o)
-  local bg = o.transparent and "NONE" or c.bg_alt
+return function(c, _, u)
+  local bg = u.sidebar_bg
+  -- Con fondo propio el cambio de color ya marca el borde; si no, separador normal
+  local separator = (bg ~= c.bg and bg ~= "NONE") and { fg = c.bg, bg = bg } or { link = "WinSeparator" }
   return {
     NvimTreeNormal         = { fg = c.fg, bg = bg },
     NvimTreeNormalNC       = { fg = c.fg, bg = bg },
-    NvimTreeWinSeparator   = { fg = c.bg, bg = bg },
+    NvimTreeWinSeparator   = separator,
     NvimTreeRootFolder     = { fg = c.green, bold = true },
     NvimTreeFolderName     = { fg = c.blue },
     NvimTreeFolderIcon     = { fg = c.blue },

@@ -4,9 +4,18 @@ local M = {}
 
 -- c: paleta, o: opciones de configuración
 function M.get(c, o)
-  local bg = o.transparent and "NONE" or c.bg
-  local float_bg = o.transparent and "NONE" or c.bg_float
   local s = o.styles
+  local bg = o.transparent and "NONE" or c.bg
+
+  -- Fondo de un tipo de panel según su estilo ("shaded" usa `shaded`)
+  local function panel(panel_style, shaded)
+    if o.transparent or panel_style == "transparent" then
+      return "NONE"
+    end
+    return panel_style == "normal" and c.bg or shaded
+  end
+  local float_bg = panel(s.floats, c.bg_float)
+  local sidebar_bg = panel(s.sidebars, c.bg_alt)
 
   -- Agrega los atributos configurados en styles a un grupo
   local function style(spec, extra)
@@ -18,10 +27,17 @@ function M.get(c, o)
     return blend(color, c.bg, alpha or 0.15)
   end
 
+  -- Ventanas sin foco: más oscuras en los temas oscuros y un poco más
+  -- sombreadas en el claro
+  local inactive_bg = bg
+  if o.dim_inactive and not o.transparent then
+    inactive_bg = c.background == "dark" and blend("#000000", c.bg, 0.3) or soft(c.fg, 0.06)
+  end
+
   local groups = {
     -- Editor
     Normal       = { fg = c.fg, bg = bg },
-    NormalNC     = { fg = c.fg, bg = bg },
+    NormalNC     = { fg = c.fg, bg = inactive_bg },
     NormalFloat  = { fg = c.fg, bg = float_bg },
     FloatBorder  = { fg = c.border, bg = float_bg },
     FloatTitle   = { fg = c.yellow, bg = float_bg, bold = true },
@@ -280,7 +296,12 @@ function M.get(c, o)
     Removed      = { fg = c.red },
   }
 
-  local ctx = { soft = soft, float_bg = float_bg, link_kinds = require("minecraft.util").link_kinds }
+  local ctx = {
+    soft = soft,
+    float_bg = float_bg,
+    sidebar_bg = sidebar_bg,
+    link_kinds = require("minecraft.util").link_kinds,
+  }
   for group, spec in pairs(require("minecraft.plugins").get(c, o, ctx)) do
     groups[group] = spec
   end

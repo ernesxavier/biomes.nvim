@@ -1,11 +1,13 @@
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 ---@type minecraft.PluginGroups
-return function(c, o)
-  local bg = o.transparent and "NONE" or c.bg_alt
+return function(c, _, u)
+  local bg = u.sidebar_bg
+  -- Con fondo propio el cambio de color ya marca el borde; si no, separador normal
+  local separator = (bg ~= c.bg and bg ~= "NONE") and { fg = c.bg, bg = bg } or { link = "WinSeparator" }
   return {
     NeoTreeNormal        = { fg = c.fg, bg = bg },
     NeoTreeNormalNC      = { fg = c.fg, bg = bg },
-    NeoTreeWinSeparator  = { fg = c.bg, bg = bg },
+    NeoTreeWinSeparator  = separator,
     NeoTreeRootName      = { fg = c.green, bold = true },
     NeoTreeDirectoryName = { fg = c.blue },
     NeoTreeDirectoryIcon = { fg = c.blue },
