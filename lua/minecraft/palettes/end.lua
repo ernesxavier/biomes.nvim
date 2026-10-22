@@ -27,6 +27,7 @@ return {
   operator   = "#94a860", -- operadores: el tono más libre de la paleta
   number     = "#63a6d7",
   punct      = "#a9a2b9", -- puntuación: neutro con el tinte del mundo
+
   math       = "#6ad3e5", -- ecuaciones: el mismo cian
   math_bg    = "#2a203b", -- franja de las ecuaciones: obsidiana
 

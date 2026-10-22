@@ -251,6 +251,22 @@ groups in [`lua/minecraft/highlights.lua`](lua/minecraft/highlights.lua) (core) 
 [`lua/minecraft/plugins/`](lua/minecraft/plugins) (one file per plugin). To add a plugin,
 create its file and register it in [`plugins/init.lua`](lua/minecraft/plugins/init.lua).
 
+### Palettes
+
+The palette files are generated. Edit [`scripts/spec.lua`](scripts/spec.lua), where every
+color is written in OKLCH (lightness, chroma, hue), then regenerate them:
+
+```sh
+nvim -l scripts/palettes.lua           # write lua/minecraft/palettes/*.lua
+nvim -l scripts/palettes.lua check     # only print the report
+nvim -l scripts/palettes.lua extract   # rebuild the spec from the palette files
+```
+
+Each variant has a `tune` table to shift every code color at once: `lightness` is
+added to L and `chroma` multiplies C. The report lists contrast against the
+background and the closest pair of colors, and warns below 4.5:1 or when two colors
+get too close to tell apart.
+
 ## 📄 License
 
 [MIT](LICENSE)

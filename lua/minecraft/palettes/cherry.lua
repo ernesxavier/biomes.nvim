@@ -27,6 +27,7 @@ return {
   operator   = "#02597f", -- operadores: el tono más libre de la paleta
   number     = "#03614b",
   punct      = "#665e67", -- puntuación: neutro con el tinte del mundo
+
   math       = "#055b61", -- ecuaciones: cian más profundo para la franja
   math_bg    = "#f0e1d9", -- franja de las ecuaciones: hierro en bruto
 
