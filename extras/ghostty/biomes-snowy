@@ -1,0 +1,23 @@
+# biomes-snowy · generado por scripts/extras.lua
+palette = 0=#2f3b48
+palette = 1=#a8353f
+palette = 2=#00783a
+palette = 3=#876602
+palette = 4=#2955ad
+palette = 5=#5d3e9e
+palette = 6=#066d7c
+palette = 7=#e8eef4
+palette = 8=#556270
+palette = 9=#a8353f
+palette = 10=#00783a
+palette = 11=#876602
+palette = 12=#2955ad
+palette = 13=#5d3e9e
+palette = 14=#066d7c
+palette = 15=#e2eaf1
+background = #f5f8fb
+foreground = #2f3b48
+cursor-color = #2955ad
+cursor-text = #f5f8fb
+selection-background = #d2e2f2
+selection-foreground = #2f3b48

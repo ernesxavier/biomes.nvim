@@ -309,19 +309,23 @@ function M.get(c, o)
   return groups
 end
 
--- Colores de :terminal; en el tema claro "negro" y "blanco" se invierten
-function M.terminal(c)
+-- Los 16 colores ANSI de la paleta; en el tema claro "negro" y "blanco" se invierten
+function M.terminal_colors(c)
   local black, white = c.bg_float, c.fg_dim
   local bright_black, bright_white = c.comment, c.fg
   if c.background == "light" then
     black, white = c.fg, c.bg_alt
     bright_black, bright_white = c.fg_dim, c.bg_float
   end
-  local colors = {
+  return {
     black, c.red, c.green, c.yellow, c.blue, c.purple, c.cyan, white,
     bright_black, c.red, c.green, c.yellow, c.blue, c.purple, c.cyan, bright_white,
   }
-  for i, color in ipairs(colors) do
+end
+
+-- Colores de :terminal
+function M.terminal(c)
+  for i, color in ipairs(M.terminal_colors(c)) do
     vim.g["terminal_color_" .. (i - 1)] = color
   end
 end

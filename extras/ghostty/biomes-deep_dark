@@ -1,0 +1,23 @@
+# biomes-deep_dark · generado por scripts/extras.lua
+palette = 0=#20242b
+palette = 1=#c88596
+palette = 2=#84c29b
+palette = 3=#cbc887
+palette = 4=#68a1eb
+palette = 5=#948be1
+palette = 6=#0acdd4
+palette = 7=#a4adae
+palette = 8=#5f7a80
+palette = 9=#c88596
+palette = 10=#84c29b
+palette = 11=#cbc887
+palette = 12=#68a1eb
+palette = 13=#948be1
+palette = 14=#0acdd4
+palette = 15=#cbd7d9
+background = #13161c
+foreground = #cbd7d9
+cursor-color = #0acdd4
+cursor-text = #13161c
+selection-background = #123f48
+selection-foreground = #cbd7d9

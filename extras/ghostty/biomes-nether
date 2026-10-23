@@ -1,0 +1,23 @@
+# biomes-nether · generado por scripts/extras.lua
+palette = 0=#2b2628
+palette = 1=#df8073
+palette = 2=#6fcb93
+palette = 3=#ecc166
+palette = 4=#9b96e9
+palette = 5=#ba83cc
+palette = 6=#44d0c1
+palette = 7=#b5b0ac
+palette = 8=#8f8384
+palette = 9=#df8073
+palette = 10=#6fcb93
+palette = 11=#ecc166
+palette = 12=#9b96e9
+palette = 13=#ba83cc
+palette = 14=#44d0c1
+palette = 15=#dfdad4
+background = #1b1819
+foreground = #dfdad4
+cursor-color = #ed9b66
+cursor-text = #1b1819
+selection-background = #47302f
+selection-foreground = #dfdad4

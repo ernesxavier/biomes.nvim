@@ -1,0 +1,23 @@
+# biomes-cherry · generado por scripts/extras.lua
+palette = 0=#4a3940
+palette = 1=#a7344a
+palette = 2=#297613
+palette = 3=#896502
+palette = 4=#3552ae
+palette = 5=#6b3895
+palette = 6=#076e75
+palette = 7=#f4e9ec
+palette = 8=#6e5860
+palette = 9=#a7344a
+palette = 10=#297613
+palette = 11=#896502
+palette = 12=#3552ae
+palette = 13=#6b3895
+palette = 14=#076e75
+palette = 15=#f0e2e6
+background = #fbf6f7
+foreground = #4a3940
+cursor-color = #9d4490
+cursor-text = #fbf6f7
+selection-background = #f6d5e0
+selection-foreground = #4a3940

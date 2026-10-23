@@ -1,0 +1,23 @@
+# biomes-end · generado por scripts/extras.lua
+palette = 0=#232129
+palette = 1=#db8da7
+palette = 2=#8ad1a0
+palette = 3=#eacf83
+palette = 4=#9aa0ff
+palette = 5=#be8be7
+palette = 6=#6ad3e5
+palette = 7=#b8b69d
+palette = 8=#7c7598
+palette = 9=#db8da7
+palette = 10=#8ad1a0
+palette = 11=#eacf83
+palette = 12=#9aa0ff
+palette = 13=#be8be7
+palette = 14=#6ad3e5
+palette = 15=#e3e0c0
+background = #15141a
+foreground = #e3e0c0
+cursor-color = #be8be7
+cursor-text = #15141a
+selection-background = #3b314d
+selection-foreground = #e3e0c0

@@ -1,0 +1,23 @@
+# biomes-plains · generado por scripts/extras.lua
+palette = 0=#4d4739
+palette = 1=#a8353f
+palette = 2=#2e760d
+palette = 3=#8c6405
+palette = 4=#2e54ae
+palette = 5=#643b9a
+palette = 6=#076f6f
+palette = 7=#ece6d6
+palette = 8=#6f6853
+palette = 9=#a8353f
+palette = 10=#2e760d
+palette = 11=#8c6405
+palette = 12=#2e54ae
+palette = 13=#643b9a
+palette = 14=#076f6f
+palette = 15=#e8e1cf
+background = #f6f2e7
+foreground = #4d4739
+cursor-color = #2e760d
+cursor-text = #f6f2e7
+selection-background = #d9e6c6
+selection-foreground = #4d4739

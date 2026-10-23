@@ -269,6 +269,27 @@ Dark variants:
 | Special | `#ed8da6` crimson fungus | `#4db9ae` ender pearl | `#6fa77f` sculk catalyst |
 | Identity | `#ed9b66` lava | `#be8be7` purpur | `#0acdd4` sculk glow |
 
+## 🧩 Extras
+
+Themes for other apps live in [`extras/`](extras), one file per variant, with the
+same ANSI colors Neovim gives `:terminal`.
+
+### [Ghostty](https://ghostty.org)
+
+Copy or symlink the themes into Ghostty's themes folder:
+
+```sh
+mkdir -p ~/.config/ghostty/themes
+ln -s /path/to/biomes.nvim/extras/ghostty/biomes-* ~/.config/ghostty/themes/
+```
+
+Then pick one in your Ghostty config, or let it follow the system appearance:
+
+```
+theme = biomes-end
+# theme = light:biomes-plains,dark:biomes-end
+```
+
 ## 🤝 Contributing
 
 Issues and pull requests are welcome, especially support for more plugins.
@@ -292,6 +313,12 @@ Each variant has a `tune` table to shift every code color at once: `lightness` i
 added to L and `chroma` multiplies C. The report lists contrast against the
 background and the closest pair of colors, and warns below 4.5:1 or when two colors
 get too close to tell apart.
+
+The themes in `extras/` are generated from the palettes too. After changing colors:
+
+```sh
+nvim -l scripts/extras.lua
+```
 
 ### Screenshots
 
